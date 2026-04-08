@@ -20,7 +20,7 @@ body {
   background: white;
   border-radius: 8px;
   margin: 8px 16px; /* optional spacing from page edge */
-  box-shadow: 0 0 22px rgba(140, 140, 140, 0.2);
+  border-bottom: 1px solid #E5E7EB;
 }
 
 /* Navigation */
@@ -171,10 +171,10 @@ a.sidebar__item {
 }
 
 .hero h1 {
-  font-family: 'Libre Baskerville', serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 28x;
   line-height: 48px;
-  color: #19162D;
+  color: #4A4387;
   margin-bottom: 16px;
 }
 
@@ -230,7 +230,8 @@ a.sidebar__item {
   left: 12px;
   width: 100%;
   height: auto;
-  transform: rotate(10.11deg);
+  transform: rotate(0deg);
+  border-radius: 16px;
   z-index: 0;
 }
 
@@ -238,14 +239,15 @@ a.sidebar__item {
   position: relative;
   width: 100%;
   height: auto;
-  transform: rotate(10.17deg);
+  transform: rotate(0deg);
+  border-radius: 16px;
   z-index: 1;
 }
 
 @keyframes float {
-  0% { transform: translateY(0px) rotate(10.17deg); }
-  50% { transform: translateY(-10px) rotate(10.17deg); }
-  100% { transform: translateY(0px) rotate(10.17deg); }
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(0deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
 }
 
 .hero-main {
@@ -1041,7 +1043,7 @@ html {
     width: 40%;
     min-width: 350px;
     z-index: 1;
-    transform: rotate(-10deg);
+    transform: rotate(0deg);
   }
 
   .hero__image-wrapper img {
@@ -1238,7 +1240,6 @@ html {
 
   .footer {
     background: #F7F7F7;
-    border: 1px solid #4A4387;
     padding: 40px;
     font-family: 'Inter', sans-serif;
     color: #4D4D4D;
