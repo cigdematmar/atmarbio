@@ -18,15 +18,15 @@ body {
 /* Navigation Wrapper */
 .nav-wrapper {
   background: white;
-  border-radius: 8px;
-  margin: 8px 16px; /* optional spacing from page edge */
+  border-radius: 0;
+  margin: 0;
   border-bottom: 1px solid #E5E7EB;
 }
 
 /* Navigation */
 .nav {
   width: 100%;
-  border-radius: 8px;
+  border-radius: 0;
   position: relative;
 }
 
@@ -168,6 +168,8 @@ a.sidebar__item {
 .hero {
   padding: 32px 20px;
   margin-top: 12px;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .hero h1 {
@@ -218,10 +220,10 @@ a.sidebar__item {
 
 .hero__image-wrapper {
   position: relative;
-  width: 280px;
-  min-width: 280px;
+  width: 220px;
+  min-width: 220px;
   flex-shrink: 0;
-  margin-left: -40px;
+  margin-left: 0;
 }
 
 .hero-bg-shape {
@@ -296,6 +298,8 @@ a.sidebar__item {
   display: flex;
   align-items: center;
   gap: 12px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .about-us__cta-text {
@@ -595,7 +599,7 @@ a.sidebar__item {
   font-family: 'Inter', sans-serif;
   margin: 0 auto; /* Ortalamak için */
   margin-bottom: 40px;
-  max-width: 350px; /* Örneğin mobilde 350px, tablet-desktopta responsive açabilirsin */
+  max-width: 100%;
 }
 
 .contact h2 {
@@ -884,14 +888,14 @@ html {
     height: 80px;
     width: 100%;
     max-width: none;
-    padding: 0 64px;
+    padding: 0;
     box-sizing: border-box;
     position: relative;
     z-index: 10;
   }
 
   .nav__logo img.logo {
-    height: 40px;
+    height: 56px;
   }
 
   .nav__menu-icon {
@@ -999,10 +1003,14 @@ html {
     position: relative;
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* yazıyı sola yasla */
-    gap:32px; /* spacing between rows */
-    padding: 40px 100px 40px 100px;
+    align-items: flex-start;
+    gap: 32px;
+    padding: 40px 20px;
     margin-bottom: 40px;
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
   }
 
   .hero__content {
@@ -1039,9 +1047,10 @@ html {
   .hero__image-wrapper {
     position: absolute;
     top: 5%;
-    right: 0%;
-    width: 40%;
-    min-width: 350px;
+    right: 2%;
+    width: 32%;
+    min-width: 280px;
+    max-width: 380px;
     z-index: 1;
     transform: rotate(0deg);
   }
@@ -1272,7 +1281,7 @@ html {
   }
 
   .footer__logo {
-    height: 40px;
+    height: 56px;
     margin-bottom: 16px;
   }
 
