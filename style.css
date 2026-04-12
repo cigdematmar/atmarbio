@@ -1625,6 +1625,11 @@ html {
   color: white;
 }
 
+.flavour-item.static {
+  cursor: default;
+  pointer-events: none;
+}
+
 .send-button {
   margin-top: 24px;
   width: 100%;
