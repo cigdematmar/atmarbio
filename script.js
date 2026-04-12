@@ -27,6 +27,8 @@ document.addEventListener('DOMContentLoaded', function () {
   // ====================
   // PETFOOD PAGE LOGIC
   // ====================
+  // Skip single-section logic on pages that define their own multi-section handling
+  if (!document.body.classList.contains('multi-section-page')) {
   const categoryCards = document.querySelectorAll('.usage-card');
   const flavourItems = document.querySelectorAll('.flavour-item');
   const button = document.querySelector('.send-button');
@@ -157,6 +159,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
   }
+  } // end multi-section-page guard
 
 
   // ====================
