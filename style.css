@@ -1460,11 +1460,11 @@ html {
 
 .usage-subtitle {
   color: #6B7280;
-  font-size: 14px;
+  font-size: 16px;
   font-family: 'Inter', sans-serif;
   font-weight: 400;
   margin-bottom: 24px;
-  transition: transform 0.5s ease;
+  animation: subtleMove 2s ease-in-out infinite alternate;
 }
 
 .usage-grid {
@@ -1583,7 +1583,7 @@ html {
 
 .flavour-instruction {
   color: #6B7280;
-  font-size: 14px;
+  font-size: 16px;
   font-family: 'Inter', sans-serif;
   margin-bottom: 16px;
   animation: subtleMove 2s ease-in-out infinite alternate;
