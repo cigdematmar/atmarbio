@@ -3,97 +3,95 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blog | Atmar Bio</title>
-    <meta name="description" content="Exploring ingredients, food science and manufacturing insights from the Atmar Bio team.">
+    <title>Production Process of Sweet Chili Sauce | Atmar Bio Blog</title>
+    <meta name="description" content="Learn how sweet chili sauce is industrially produced step by step, including ingredients, manufacturing steps and flavouring tips.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" href="icons/favicon.ico" type="image/x-icon">
     <style>
-      .blog-heading {
-        text-align: center;
-        padding: 48px 20px 24px;
-        max-width: 960px;
-        margin: 0 auto;
-        box-sizing: border-box;
-      }
-      .blog-heading h1 {
-        font-family: 'Libre Baskerville', serif;
-        font-size: 28px;
-        color: #4A4387;
-        line-height: 1.3;
-        margin-bottom: 24px;
-      }
-      @media (min-width: 600px) {
-        .blog-heading h1 { font-size: 34px; }
-      }
-      .blog-heading__divider {
-        border: none;
-        border-top: 1px solid #E5E7EB;
-        margin: 0;
-      }
-
-      .blog-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 24px;
-        max-width: 960px;
-        margin: 0 auto;
-        padding: 40px 20px;
-        box-sizing: border-box;
-      }
-      @media (min-width: 600px) {
-        .blog-grid { grid-template-columns: repeat(2, 1fr); }
-      }
-      @media (min-width: 900px) {
-        .blog-grid { grid-template-columns: repeat(3, 1fr); }
-      }
-
-      .blog-card {
-        display: block;
-        text-decoration: none;
-        background: white;
-        border-radius: 12px;
-        box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-        overflow: hidden;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-      }
-      .blog-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 6px 16px rgba(0,0,0,0.12);
-      }
-      .blog-card__image {
+      .article-hero {
         width: 100%;
-        height: 200px;
+        max-height: 400px;
         object-fit: cover;
         display: block;
       }
-      .blog-card__body {
-        padding: 16px;
-      }
-      .blog-card__date {
-        font-size: 12px;
-        color: #6B7280;
+
+      .article-content {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 48px 24px;
         font-family: 'Inter', sans-serif;
-        display: block;
-        margin-bottom: 8px;
+        box-sizing: border-box;
       }
-      .blog-card__title {
-        font-size: 16px;
-        font-weight: 600;
+
+      .article-content h1 {
+        font-family: 'Libre Baskerville', serif;
+        font-size: 32px;
         color: #19162D;
-        font-family: 'Inter', sans-serif;
-        line-height: 1.4;
-        margin-bottom: 8px;
+        line-height: 1.3;
+        margin-bottom: 12px;
       }
-      .blog-card__excerpt {
+
+      .article-content .article-date {
         font-size: 13px;
         color: #6B7280;
+        display: block;
+        margin-bottom: 40px;
+      }
+
+      .article-content h2 {
         font-family: 'Inter', sans-serif;
-        line-height: 1.6;
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
+        font-size: 20px;
+        font-weight: 600;
+        color: #4A4387;
+        margin-top: 40px;
+        margin-bottom: 12px;
+      }
+
+      .article-content h3 {
+        font-family: 'Inter', sans-serif;
+        font-size: 17px;
+        font-weight: 600;
+        color: #19162D;
+        margin-top: 24px;
+        margin-bottom: 12px;
+      }
+
+      .article-content p {
+        font-size: 16px;
+        color: #374151;
+        line-height: 1.8;
+        margin-bottom: 20px;
+      }
+
+      .article-content ul,
+      .article-content ol {
+        margin-left: 20px;
+        margin-bottom: 20px;
+      }
+
+      .article-content li {
+        font-size: 16px;
+        color: #374151;
+        line-height: 1.8;
+        margin-bottom: 8px;
+      }
+
+      .article-divider {
+        border: none;
+        border-top: 1px solid #E5E7EB;
+        margin: 32px 0;
+      }
+
+      .article-aside {
+        background: #FFF8F0;
+        border-left: 3px solid #99AF61;
+        border-radius: 0;
+        padding: 16px;
+        font-size: 14px;
+        color: #6B7280;
+        font-style: italic;
+        margin-bottom: 24px;
       }
     </style>
   </head>
@@ -195,39 +193,53 @@
 
   <main>
 
-    <div class="blog-heading">
-      <h1>Exploring Ingredients: Fascinating Facts and Manufacturing Insights</h1>
-      <hr class="blog-heading__divider">
-    </div>
+    <img src="images/sweet-chili-sauce.jpg" alt="Production Process of Sweet Chili Sauce" class="article-hero">
 
-    <div class="blog-grid">
+    <div class="article-content">
 
-      <a href="blog-e300-ascorbic-acid.html" class="blog-card">
-        <img src="images/ascorbic-acid.jpg" alt="E300 Ascorbic Acid" class="blog-card__image" loading="lazy">
-        <div class="blog-card__body">
-          <span class="blog-card__date">Oct 7, 2021</span>
-          <div class="blog-card__title">E 300 / Ascorbic Acid</div>
-          <p class="blog-card__excerpt">What does ascorbic acid mean? L-Ascorbic acid (C6H8O6) also known as vitamin C is a water-soluble vitamin found in nature.</p>
-        </div>
-      </a>
+      <h1>Production Process of Sweet Chili Sauce</h1>
+      <span class="article-date">September 22, 2021</span>
 
-      <a href="blog-cereals.html" class="blog-card">
-        <img src="images/cereal.jpg" alt="Manufacturing Steps of Ready to Eat Cereals" class="blog-card__image" loading="lazy">
-        <div class="blog-card__body">
-          <span class="blog-card__date">Jul 30, 2021</span>
-          <div class="blog-card__title">Manufacturing Steps of Ready to Eat Cereals</div>
-          <p class="blog-card__excerpt">Cereals make the breakfast 'fast'. Ready-to-eat breakfast cereal is widely used due to its taste and easy preparation.</p>
-        </div>
-      </a>
+      <h2>Ingredients</h2>
+      <ul>
+        <li>Tomato (peeled, chopped, and seeds removed)</li>
+        <li>A sweetener</li>
+        <li>Vinegar</li>
+        <li>Onion</li>
+        <li>Salt</li>
+        <li>Chili pepper</li>
+        <li>Seasonings: mustard powder, clove, garlic, pimento, cinnamon</li>
+      </ul>
 
-      <a href="blog-sweet-chili-sauce.html" class="blog-card">
-        <img src="images/sweet-chili-sauce.jpg" alt="Production Process of Sweet Chili Sauce" class="blog-card__image" loading="lazy">
-        <div class="blog-card__body">
-          <span class="blog-card__date">Sep 22, 2021</span>
-          <div class="blog-card__title">Production Process of Sweet Chili Sauce</div>
-          <p class="blog-card__excerpt">Ingredients: Tomato (peeled, chopped, and seeds removed), a sweetener, vinegar, onion, salt, chili pepper, seasonings.</p>
-        </div>
-      </a>
+      <hr class="article-divider">
+
+      <h2>Preliminary</h2>
+      <p>All ingredients are provided and cleaned. After acceptance of tomatoes to the facility, cleaning and eliminating rotten parts of tomatoes are done.</p>
+
+      <div class="article-aside">
+        If the green stalks of tomatoes are not eliminated, chlorophyll turns pheophytins that have a dirty yellow color in the heating process.
+      </div>
+
+      <hr class="article-divider">
+
+      <h2>Manufacturing Steps</h2>
+
+      <h3>Step 1</h3>
+      <p>Chopped tomatoes and chopped onions are mixed with 1/3 of the total amount of sugar and evaporated until the volume is half. Due to bad sight effects of sugar, totally natural sweetness — ex. <a href="https://atmarbio.com" style="color:#4A4387; font-weight:600;">monk fruit sweetness</a> — are recommended. In this case, tomatoes and onions should be concentrated directly.</p>
+      <p>Crushed tomatoes should be heated at a temperature in the range of 65–80°C. Viscosity is low below 65°C. At temperatures above 80°C, darkening is observed due to caramelization.</p>
+
+      <hr class="article-divider">
+
+      <h3>Step 2</h3>
+      <p>The mixture is flavored near the end of the heat process. There are three ways to spice the mix up.</p>
+      <p><strong>a)</strong> Chili pepper, clove, garlic, pimento, cinnamon are left in vinegar for 2 hours at a lower temperature from the temperature of boiling. Spiced vinegar is filtered. Filtered vinegar, salt, mustard powder, and leftover sugar or any other sweetness are added to the tomato &amp; onion mix. As a final step, the mix is sent to second evaporation.</p>
+      <p><strong>b)</strong> The spice mix is put in a bag and dipped into the chopped tomato and onion mix, and they are heat-treated together. Then vinegar, sugar, and salt are added. After a little more thickening the bag is removed from the mixture.</p>
+      <p><strong>c)</strong> Instead of using powder spices and/or herbs, natural liquid flavors can be used as well. After evaporation of tomato &amp; onion mix, vinegar, salt, sweetness, and natural flavors are added directly. Different kinds of flavor combinations also can be used. For exotic taste, coconut flavor will be suitable for this sauce. For more ideas and information about natural flavors, please visit <a href="https://atmarbio.com" style="color:#4A4387; font-weight:600;">atmarbio.com</a>. <a href="https://atmarbio.com" style="color:#4A4387; font-weight:600;">Natural flavors</a> are derived from natural substances, and they can be declared as "natural flavorings" on the label.</p>
+
+      <hr class="article-divider">
+
+      <h3>Step 3</h3>
+      <p>The sauce is preferably filled in glass packages and pasteurization is applied at 93°C.</p>
 
     </div>
 
