@@ -31,7 +31,7 @@
     .dropdown { position: relative; }
     .dropdown > a { display: flex; align-items: center; gap: 4px; }
     .dropdown-menu { display: none; position: absolute; top: calc(100% + 8px); left: 0; background: white; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); min-width: 220px; padding: 8px 0; z-index: 200; }
-    .dropdown:hover .dropdown-menu { display: block; }
+    .dropdown.open .dropdown-menu { display: block; }
     .dropdown-menu a { display: block; padding: 10px 16px; font-size: 14px; color: var(--purple); text-decoration: none; }
     .dropdown-menu a:hover { background: var(--grey-light); }
     .nav__cta { background: var(--purple); color: white !important; padding: 8px 18px; border-radius: 8px; font-weight: 600 !important; }
@@ -143,7 +143,7 @@
     .popup__btns button { flex: 1; padding: 11px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; border: none; }
     .popup__send { background: var(--purple); color: white; }
     .popup__cancel { background: var(--grey-light); color: #374151; }
-    /* FOOTER — identical to style.css */
+    /* FOOTER — matches index.html via style.css */
     .footer { background: #FFFFFF; padding: 20px; font-family: 'Inter', sans-serif; color: #4D4D4D; }
     .footer__top { display: flex; flex-direction: column; gap: 24px; }
     .footer__brand { display: flex; justify-content: space-between; align-items: center; padding-bottom: 16px; border-bottom: 1px solid #D9DDE8; margin-bottom: 16px; }
@@ -160,16 +160,14 @@
     .footer a { text-decoration: none; color: inherit; }
     .footer a:hover { text-decoration: underline; }
     @media(min-width: 900px) {
-      .footer__top { flex-direction: row; justify-content: space-between; }
-      .footer__links { grid-template-columns: repeat(4, auto); }
-      .footer__socials a img:hover { transform: scale(1.1); }
-      .footer { background: #F7F7F7; padding: 40px; border-radius: 8px; }
+      .footer { max-width: 1200px; margin: 0 auto; background: #F7F7F7; padding: 40px; border-radius: 8px; }
       .footer__top { display: grid; grid-template-columns: auto 1fr; gap: 40px; align-items: start; }
       .footer__brand { display: flex; flex-direction: column; align-items: flex-start; padding-left: 40px; border-bottom: none; margin-bottom: 0; }
-      .footer__links { border-bottom: none; margin-bottom: 0; display: grid !important; grid-template-columns: repeat(2, auto); gap: 8px 10px !important; margin-left: 80px; }
       .footer__logo { height: 56px; margin-bottom: 16px; }
       .footer__socials { display: flex; gap: 12px; margin-left: -15px; }
       .footer__socials a img { width: 24px; height: 24px; }
+      .footer__socials a img:hover { transform: scale(1.1); }
+      .footer__links { border-bottom: none; margin-bottom: 0; display: grid !important; grid-template-columns: repeat(2, auto); gap: 8px 10px !important; margin-left: 80px; }
       .footer__links h3 { font-size: 14px; font-weight: 600; margin-bottom: 12px; }
       .footer__links ul { list-style: none; padding: 0; }
       .footer__links li a { font-size: 14px; font-weight: 400; color: #4D4D4D; text-decoration: none; margin-bottom: 8px; display: block; }
@@ -217,8 +215,8 @@
     <nav class="nav__desktop">
       <a href="index.html">Home</a>
       <a href="index.html#about">About Us</a>
-      <div class="dropdown">
-        <a href="#">Products <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round"/></svg></a>
+      <div class="dropdown" id="productsDropdown">
+        <a href="#" onclick="toggleDropdown(event)">Products <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round"/></svg></a>
         <div class="dropdown-menu">
           <a href="sweetflavours.html">Sweet Flavours</a>
           <a href="savouryflavours.html" style="color:var(--green)">Savoury Flavours</a>
@@ -687,6 +685,16 @@
 <script>
   function openSidebar() { document.getElementById('sidebar').classList.add('open'); document.getElementById('overlay').classList.add('open'); }
   function closeSidebar() { document.getElementById('sidebar').classList.remove('open'); document.getElementById('overlay').classList.remove('open'); }
+  function toggleDropdown(e) {
+    e.preventDefault();
+    const dropdown = document.getElementById('productsDropdown');
+    dropdown.classList.toggle('open');
+  }
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('#productsDropdown')) {
+      document.getElementById('productsDropdown').classList.remove('open');
+    }
+  });
   function toggleFaq(btn) {
     const item = btn.closest('.faq__item');
     const isOpen = item.classList.contains('open');
