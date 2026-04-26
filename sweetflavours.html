@@ -1,441 +1,646 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sweet Flavours for Food & Beverage | EU-Origin & Customised | Atmar Bio</title>
-    <meta name="description" content="Explore our EU-origin sweet flavours for dairy, beverages, bakery, desserts, and functional foods. Safe, customisable, and crafted for rich taste experiences.">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sweet Flavours for Food &amp; Beverage | EU Supply | Atmar Bio</title>
+  <meta name="description" content="Fruit, vanilla, chocolate, bakery, dairy, and confectionery flavours. EU-origin, custom development, natural conversion. Request a sample." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="icon" href="icons/favicon.ico" type="image/x-icon" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: #19162D; background: white; }
+    :root {
+      --purple: #4A4387; --purple-dark: #312D5A; --purple-light: #B7B3D7;
+      --green: #99AF61; --lime: #CCE981; --lime-bg: #D5ED98;
+      --grey-light: #f1f1f1; --grey-text: #6B7280; --grey-border: #E5E7EB;
+    }
+    /* NAV */
+    .nav-wrapper { background: white; border-bottom: 1px solid var(--grey-border); position: sticky; top: 0; z-index: 100; }
+    .nav__container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; }
+    .nav__logo img { height: 28px; }
+    .nav__hamburger { cursor: pointer; }
+    .nav__hamburger svg { width: 22px; height: 22px; }
+    .nav__desktop { display: none; gap: 28px; align-items: center; }
+    .nav__desktop a { font-size: 14px; font-weight: 500; color: #1F2937; text-decoration: none; transition: color .2s; }
+    .nav__desktop a:hover { color: var(--purple-light); }
+    .nav__desktop a.active { color: var(--green); }
+    .dropdown { position: relative; }
+    .dropdown > a { display: flex; align-items: center; gap: 4px; }
+    .dropdown-menu { display: none; position: absolute; top: calc(100% + 8px); left: 0; background: white; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); min-width: 220px; padding: 8px 0; z-index: 200; }
+    .dropdown.open .dropdown-menu { display: block; }
+    .dropdown-menu a { display: block; padding: 10px 16px; font-size: 14px; color: var(--purple); text-decoration: none; }
+    .dropdown-menu a:hover { background: var(--grey-light); }
+    .nav__cta { background: var(--purple); color: white !important; padding: 8px 18px; border-radius: 8px; font-weight: 600 !important; }
+    @media(min-width: 1024px) { .nav__hamburger { display: none; } .nav__desktop { display: flex; } }
+    /* SIDEBAR */
+    .sidebar-overlay { position: fixed; inset: 0; background: rgba(25,22,45,.45); opacity: 0; pointer-events: none; transition: opacity .3s; z-index: 200; }
+    .sidebar-overlay.open { opacity: 1; pointer-events: all; }
+    .sidebar { position: fixed; top: 0; left: -85%; width: 85%; max-width: 320px; height: 100%; background: white; transition: left .3s ease; z-index: 201; padding: 24px 20px; overflow-y: auto; }
+    .sidebar.open { left: 0; }
+    .sidebar__header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; }
+    .sidebar__header img { height: 24px; }
+    .sidebar a { display: block; padding: 10px 4px; font-size: 15px; font-weight: 500; color: #19162D; text-decoration: none; border-bottom: 1px solid #F3F4F6; }
+    .sidebar a:hover { color: var(--green); }
+    .sidebar__section-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--green); margin: 20px 0 6px; }
+    .sidebar .sub-link { padding: 8px 4px 8px 16px; font-size: 14px; font-weight: 400; }
+    /* HERO */
+    .page-hero { max-width: 1200px; margin: 0 auto; padding: 40px 20px 0; display: grid; grid-template-columns: 1fr; gap: 32px; }
+    @media(min-width: 768px) { .page-hero { grid-template-columns: 1fr 1fr; align-items: center; padding: 48px 20px 0; } }
+    .page-hero__tag { display: inline-flex; align-items: center; gap: 6px; background: #F0EFF8; color: var(--purple); font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 20px; margin-bottom: 16px; }
+    .page-hero__tag span { width: 6px; height: 6px; background: var(--green); border-radius: 50%; }
+    .page-hero h1 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(26px, 4vw, 44px); line-height: 1.15; color: var(--purple-dark); margin-bottom: 14px; }
+    .page-hero__sub { font-size: 15px; color: var(--grey-text); line-height: 1.65; margin-bottom: 28px; }
+    .page-hero__cta { background: var(--purple-dark); border-radius: 8px; padding: 20px 22px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .page-hero__cta p { color: rgba(255,255,255,.9); font-size: 14px; flex: 1; min-width: 160px; }
+    .page-hero__cta a { background: white; color: var(--purple); font-size: 14px; font-weight: 700; padding: 10px 20px; border-radius: 8px; text-decoration: none; white-space: nowrap; flex-shrink: 0; }
+    .page-hero__cta a:hover { background: var(--lime); }
+    .page-hero__image { border-radius: 16px; overflow: hidden; }
+    .page-hero__image img { width: 100%; height: 320px; object-fit: cover; display: block; border-radius: 16px; }
+    @media(min-width: 768px) { .page-hero__image img { height: 380px; } }
+    /* SECTION */
+    .section { padding: 56px 20px; max-width: 1200px; margin: 0 auto; }
+    .section--slim { padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
+    .section__label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--green); margin-bottom: 8px; }
+    .section__title { font-family: 'Libre Baskerville', serif; font-size: clamp(20px, 3vw, 28px); font-weight: 700; color: var(--purple-dark); margin-bottom: 6px; }
+    .section__subtitle { font-size: 14px; color: var(--grey-text); margin-bottom: 28px; }
+    /* USAGE AREAS */
+    .usage-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    @media(min-width: 600px) { .usage-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media(min-width: 900px) { .usage-grid { grid-template-columns: repeat(6, 1fr); } }
+    .usage-card { background: #F9F9F9; border-radius: 8px; padding: 20px 12px; text-align: center; cursor: pointer; transition: background .25s; display: flex; flex-direction: column; align-items: center; gap: 10px; border: 2px solid transparent; }
+    .usage-card:hover, .usage-card.selected { background: var(--purple-light); border-color: var(--purple-light); }
+    .usage-card img { width: 32px; height: 32px; object-fit: contain; }
+    .usage-card span { font-size: 13px; font-weight: 500; color: #1F2937; line-height: 1.3; }
+    .usage-card small { font-size: 11px; color: #9CA3AF; line-height: 1.3; }
+    /* CERT STRIP */
+    .cert-strip { border: 1px solid var(--grey-border); border-radius: 10px; padding: 20px 24px; display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between; }
+    .cert-strip__fssc { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+    .cert-strip__fssc-ring { width: 24px; height: 24px; border-radius: 50%; border: 2px solid var(--green); display: flex; align-items: center; justify-content: center; }
+    .cert-strip__fssc-ring svg { width: 12px; height: 12px; color: var(--green); }
+    .cert-strip__fssc-label { font-size: 14px; font-weight: 700; color: #1F2937; }
+    .cert-strip__text { font-size: 13px; color: #6B7280; line-height: 1.6; flex: 1; min-width: 200px; display: flex; gap: 8px; align-items: flex-start; }
+    .cert-strip__text svg { flex-shrink: 0; color: var(--green); margin-top: 2px; }
+    .cert-strip__badges { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+    .cert-strip__badge { text-align: center; }
+    .cert-strip__badge svg { width: 48px; height: 48px; display: block; margin: 0 auto 4px; }
+    .cert-strip__badge p { font-size: 10px; color: #9CA3AF; max-width: 80px; line-height: 1.3; }
+    /* FLAVOUR LIST */
+    .flavour-section { margin-bottom: 32px; }
+    .flavour-section__title { font-family: 'Libre Baskerville', serif; font-size: 16px; font-weight: 700; color: var(--purple); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--grey-border); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    .flavour-section__title svg { transition: transform .25s; flex-shrink: 0; }
+    .flavour-section__title.open svg { transform: rotate(180deg); }
+    .flavour-items { display: none; grid-template-columns: 1fr 1fr; gap: 4px 16px; margin-top: 8px; }
+    @media(min-width: 600px) { .flavour-items { grid-template-columns: repeat(3, 1fr); } }
+    .flavour-items.open { display: grid; }
+    .flavour-item { padding: 8px 10px; border-radius: 4px; font-size: 13px; color: #374151; cursor: pointer; transition: background .15s; }
+    .flavour-item:hover { background: var(--grey-light); }
+    .flavour-item.selected { background: var(--purple-light); color: white; }
+    .send-btn { width: 100%; background: var(--purple); color: white; padding: 13px; border: none; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: not-allowed; opacity: .5; margin-top: 16px; transition: opacity .2s; }
+    .send-btn.active { cursor: pointer; opacity: 1; }
+    /* FAQ */
+    .faq__list { border: 1px solid var(--grey-border); border-radius: 10px; overflow: hidden; }
+    .faq__item { border-bottom: 1px solid var(--grey-border); }
+    .faq__item:last-child { border-bottom: none; }
+    .faq__question { width: 100%; background: none; border: none; padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; text-align: left; gap: 16px; }
+    .faq__question span { font-size: 14px; font-weight: 600; color: #1F2937; }
+    .faq__question svg { flex-shrink: 0; color: var(--purple); transition: transform .25s; }
+    .faq__item.open .faq__question svg { transform: rotate(180deg); }
+    .faq__answer { max-height: 0; overflow: hidden; transition: max-height .3s ease; }
+    .faq__answer p { padding: 0 20px 16px; font-size: 13px; color: var(--grey-text); line-height: 1.7; }
+    .faq__item.open .faq__answer { max-height: 300px; }
+    /* CONTACT */
+    .contact-section { background: var(--lime-bg); border-radius: 10px; padding: 40px 28px; }
+    .contact-grid { display: grid; gap: 40px; }
+    @media(min-width: 768px) { .contact-grid { grid-template-columns: 1fr 1fr; } }
+    .contact-section h2 { font-family: 'Libre Baskerville', serif; font-size: 24px; font-weight: 700; color: var(--purple); margin-bottom: 8px; }
+    .contact-section .sub { font-style: italic; font-size: 14px; color: var(--purple); margin-bottom: 20px; opacity: .8; }
+    .contact-info-item { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--purple); margin-bottom: 10px; }
+    .contact-socials { display: flex; gap: 12px; margin-top: 20px; }
+    .contact-socials a { width: 36px; height: 36px; border-radius: 8px; background: var(--purple); display: flex; align-items: center; justify-content: center; }
+    .contact-socials svg { width: 16px; height: 16px; color: white; }
+    .contact-form { display: flex; flex-direction: column; gap: 14px; }
+    .contact-form label { font-size: 13px; font-weight: 600; color: #1F2937; display: flex; flex-direction: column; gap: 6px; }
+    .contact-form input, .contact-form textarea, .contact-form select { padding: 12px 14px; border: 1px solid #D1D5DB; border-radius: 8px; font-size: 14px; font-family: 'Inter', sans-serif; color: #374151; background: white; }
+    .contact-form input:focus, .contact-form textarea:focus, .contact-form select:focus { outline: none; border-color: var(--purple); }
+    .contact-form textarea { min-height: 90px; resize: vertical; }
+    .contact-form button { background: var(--purple); color: white; padding: 13px; border: none; border-radius: 8px; font-weight: 700; font-size: 15px; cursor: pointer; }
+    .contact-form button:hover { background: var(--purple-dark); }
+    /* POPUP */
+    .popup-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.5); align-items: center; justify-content: center; z-index: 9999; display: none; }
+    .popup-overlay.open { display: flex; }
+    .popup { background: white; padding: 28px; border-radius: 10px; max-width: 420px; width: 92%; }
+    .popup h3 { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--purple); margin-bottom: 6px; }
+    .popup__selected { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0; }
+    .popup__tag { background: #F9F9F9; border-radius: 4px; padding: 4px 10px; font-size: 12px; color: #374151; }
+    .popup__form label { display: block; font-size: 13px; font-weight: 600; color: #1F2937; margin-top: 14px; margin-bottom: 5px; }
+    .popup__form input, .popup__form textarea { width: 100%; padding: 10px 12px; border: 1px solid var(--grey-border); border-radius: 8px; font-size: 13px; font-family: 'Inter', sans-serif; }
+    .popup__form textarea { min-height: 70px; resize: vertical; }
+    .popup__btns { display: flex; gap: 10px; margin-top: 16px; }
+    .popup__btns button { flex: 1; padding: 11px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; border: none; }
+    .popup__send { background: var(--purple); color: white; }
+    .popup__cancel { background: var(--grey-light); color: #374151; }
+    /* FOOTER — matches index.html via style.css */
+    .footer { background: #FFFFFF; padding: 20px; font-family: 'Inter', sans-serif; color: #4D4D4D; }
+    .footer__top { display: flex; flex-direction: column; gap: 24px; }
+    .footer__brand { display: flex; justify-content: space-between; align-items: center; padding-bottom: 16px; border-bottom: 1px solid #D9DDE8; margin-bottom: 16px; }
+    .footer__logo { height: 32px; }
+    .footer__socials { display: flex; gap: 0; }
+    .footer__socials a { display: inline-flex; background: transparent; width: auto; height: auto; border-radius: 0; padding: 0; }
+    .footer__socials a img { width: 24px; height: 24px; margin-left: 12px; }
+    .footer__links { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding-bottom: 16px; border-bottom: 1px solid #D9DDE8; margin-bottom: 16px; }
+    .footer__links h3 { font-size: 12px; font-weight: 400; margin-bottom: 8px; }
+    .footer__links ul { list-style: none; padding: 0; }
+    .footer__links li a { font-size: 12px; font-weight: 600; color: #4D4D4D; text-decoration: none; display: block; margin-bottom: 6px; }
+    .footer__bottom { display: flex; justify-content: space-between; margin-top: 24px; font-size: 10px; }
+    .footer__bottom a { color: #4D4D4D; text-decoration: none; font-weight: 400; }
+    .footer a { text-decoration: none; color: inherit; }
+    .footer a:hover { text-decoration: underline; }
+    @media(min-width: 900px) {
+      .footer { max-width: 1200px; margin: 0 auto; background: #F7F7F7; padding: 40px; border-radius: 8px; }
+      .footer__top { display: grid; grid-template-columns: auto 1fr; gap: 40px; align-items: start; }
+      .footer__brand { display: flex; flex-direction: column; align-items: flex-start; padding-left: 40px; border-bottom: none; margin-bottom: 0; }
+      .footer__logo { height: 56px; margin-bottom: 16px; }
+      .footer__socials { display: flex; gap: 12px; margin-left: -15px; }
+      .footer__socials a img { width: 24px; height: 24px; }
+      .footer__socials a img:hover { transform: scale(1.1); }
+      .footer__links { border-bottom: none; margin-bottom: 0; display: grid !important; grid-template-columns: repeat(2, auto); gap: 8px 10px !important; margin-left: 80px; }
+      .footer__links h3 { font-size: 14px; font-weight: 600; margin-bottom: 12px; }
+      .footer__links ul { list-style: none; padding: 0; }
+      .footer__links li a { font-size: 14px; font-weight: 400; color: #4D4D4D; text-decoration: none; margin-bottom: 8px; display: block; }
+      .footer__links li a:hover { text-decoration: underline; }
+      .footer__bottom { display: flex; justify-content: space-between; border-top: 1px solid #D9DDE8; padding-top: 16px; font-size: 12px; margin-top: 0; }
+    }
+  </style>
+</head>
+<body>
 
-    <link rel="icon" href="icons/favicon.ico" type="image/x-icon">
-  </head>
-  <body>
-
-  <!-- Header (menu) -->
-<header>
-  <div class="nav-wrapper">
-    <!-- Navigation -->
-    <nav class="nav" role="navigation" aria-label="Main Navigation">
-      <div class="nav__container">
-        <div class="nav__logo">
-          <a href="index.html">
-            <img src="images/atmarbio-logo-desktop.svg" alt="Atmar Bio logo - food ingredients supplier" class="logo" loading="lazy">
-          </a>
-        </div>
-
-        <div class="nav__menu-items">
-          <div class="dropdown">
-            <a href="#" class="active">Products
-              <img src="icons/dropdown-arrow.svg" alt="dropdown arrow" class="dropdown-arrow">
-            </a>
-            <div class="dropdown-content">
-              <a href="sweetflavours.html">Sweet Flavours</a>
-              <a href="savouryflavours.html">Savoury Flavours</a>
-              <a href="alcoholicandliquorflavours.html">Alcoholic & Liquor Flavours</a>
-              <a href="petfood.html">Pet Food Flavours</a>
-              <a href="coffeeflavours.html">Coffee Flavours</a>
-              <a href="tobaccoflavours.html">Tobacco Flavours</a>
-              <a href="cleanlabelflavours.html">Clean Label Flavours</a>
-              <a href="veganflavours.html">Vegan Flavours</a>
-              <a href="fragrances.html">Fragrances</a>
-            </div>
-          </div>
-          <a href="blog.html">Blog</a>
-          <a href="#contact">Contact</a>
-        </div>
-
-        <div class="nav__menu-icon" role="button" aria-label="Open menu">
-          <img src="icons/menu-icon.svg" alt="Menu icon">
-        </div>
-      </div>
-    </nav>
-  </div>
-</header>
-
-
-<!-- Sidebar Overlay -->
-<div class="sidebar-overlay"></div>
-
-<!-- Sidebar -->
-<aside class="sidebar">
+<div class="sidebar-overlay" id="overlay" onclick="closeSidebar()"></div>
+<aside class="sidebar" id="sidebar">
   <div class="sidebar__header">
-    <img src="images/atmarbio-logo-mobile.svg" alt="Atmar Bio logo" class="sidebar__logo" />
-    <img src="icons/close-icon.svg" alt="Close menu" class="sidebar__close" role="button" aria-label="Close menu" />
+    <img src="images/atmarbio-logo-desktop.svg" alt="Atmar Bio" />
+    <button onclick="closeSidebar()" style="background:none;border:none;cursor:pointer;padding:4px">
+      <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12" stroke-linecap="round"/></svg>
+    </button>
   </div>
-
-  <nav class="sidebar__content">
-    <div class="sidebar__section">
-      <a href="index.html" class="sidebar__item">
-        <img src="icons/icon-home.svg" alt="Home icon" class="sidebar__icon" />␊
-        <span>Home</span>␊
-      </a>
-
-      <!-- Products header -->
-      <div class="sidebar__item sidebar__products-header">
-        <img src="icons/icon-products.svg" alt="Products icon" class="sidebar__icon" />
-        <span>Products</span>
-      </div>
-
-      <!-- Products list -->
-      <ul class="sidebar__products">␊
-        <li><a href="sweetflavours.html">Sweet Flavours</a></li>
-        <li><a href="savouryflavours.html">Savoury Flavours</a></li>
-        <li><a href="alcoholicandliquorflavours.html">Alcoholic & Liquor Flavours</a></li>
-        <li><a href="petfood.html">Pet Food Flavours</a></li>
-        <li><a href="coffeeflavours.html">Coffee Flavours</a></li>
-        <li><a href="tobaccoflavours.html">Tobacco Flavours</a></li>
-        <li><a href="cleanlabelflavours.html">Clean Label Flavours</a></li>
-        <li><a href="veganflavours.html">Vegan Flavours</a></li>
-        <li><a href="fragrances.html">Fragrances</a></li>
-        <li><a href="#">Salep</a></li>
-        <li><a href="#">Paulownia</a></li>
-      </ul>␊
-
-      <a href="index.html#about" class="sidebar__item">
-        <img src="icons/icon-about-us.svg" alt="About us icon" class="sidebar__icon" />␊
-        <span>About Us</span>␊
-      </a>
-
-      <a href="#" class="sidebar__item">
-        <img src="icons/icon-blog.svg" alt="Blog icon" class="sidebar__icon" />␊
-        <span>Blog</span>␊
-      </a>
-
-      <a href="index.html#contact" class="sidebar__item">
-        <img src="icons/icon-contact.svg" alt="Contact icon" class="sidebar__icon" />␊
-        <span>Contact</span>␊
-      </a>
-    </div>
-  </nav>
+  <a href="index.html">Home</a>
+  <a href="index.html#about">About Us</a>
+  <div class="sidebar__section-title">Products</div>
+  <a class="sub-link" href="sweetflavours.html" style="color:var(--green)">Sweet Flavours</a>
+  <a class="sub-link" href="savouryflavours.html">Savoury Flavours</a>
+  <a class="sub-link" href="alcoholicandliquorflavours.html">Alcoholic &amp; Liquor</a>
+  <a class="sub-link" href="petfood.html">Pet Food &amp; Feed</a>
+  <a class="sub-link" href="coffeeflavours.html">Coffee Flavours</a>
+  <a class="sub-link" href="tobaccoflavours.html">Tobacco Flavours</a>
+  <a class="sub-link" href="cleanlabelflavours.html">Clean Label</a>
+  <a class="sub-link" href="veganflavours.html">Vegan Flavours</a>
+  <a class="sub-link" href="fragrances.html">Fragrances</a>
+  <a href="blog.html">Blog</a>
+  <a href="index.html#contact">Contact</a>
 </aside>
 
-  <main>
-    <!-- Sweet hero section -->
-<section class="petfood-hero">
-  <div class="petfood-hero-frame">
-    <img src="images/sweet-bakery-flavours.jpg" alt="Sweet flavour applications in food production" class="petfood-hero-image">
-    <div class="petfood-green-bg">
-      <h1 class="petfood-hero-title">Sweet Flavours for Food Products</h1>
+<div class="nav-wrapper">
+  <div class="nav__container">
+    <div class="nav__logo">
+      <a href="index.html">
+        <img src="images/atmarbio-logo-desktop.svg" alt="Atmar Bio" />
+      </a>
+    </div>
+    <button class="nav__hamburger" onclick="openSidebar()" aria-label="Open menu">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"/></svg>
+    </button>
+    <nav class="nav__desktop">
+      <a href="index.html">Home</a>
+      <a href="index.html#about">About Us</a>
+      <div class="dropdown" id="productsDropdown">
+        <a href="#" onclick="toggleDropdown(event)">Products <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round"/></svg></a>
+        <div class="dropdown-menu">
+          <a href="sweetflavours.html" style="color:var(--green)">Sweet Flavours</a>
+          <a href="savouryflavours.html">Savoury Flavours</a>
+          <a href="alcoholicandliquorflavours.html">Alcoholic &amp; Liquor</a>
+          <a href="petfood.html">Pet Food &amp; Feed</a>
+          <a href="coffeeflavours.html">Coffee Flavours</a>
+          <a href="tobaccoflavours.html">Tobacco Flavours</a>
+          <a href="cleanlabelflavours.html">Clean Label</a>
+          <a href="veganflavours.html">Vegan Flavours</a>
+          <a href="fragrances.html">Fragrances</a>
+        </div>
+      </div>
+      <a href="blog.html">Blog</a>
+      <a href="index.html#contact" class="nav__cta">Contact</a>
+    </nav>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="page-hero__left">
+    <div class="page-hero__tag"><span></span> EU-origin sweet flavours</div>
+    <h1>Sweet flavours for food &amp; beverage producers</h1>
+    <p class="page-hero__sub">Fruit, vanilla, chocolate, caramel, dairy, bakery, and confectionery flavour systems. Developed for beverages, dairy, baked goods, confectionery, ice cream, and snacks.</p>
+    <div class="page-hero__cta">
+      <p>Looking for the right sweet flavour? Send us your application, target profile, and declaration preference.</p>
+      <a href="#contact">Start a brief</a>
     </div>
   </div>
+  <div class="page-hero__image">
+    <img src="images/sweet-bakery-flavours.jpg" alt="Sweet food production" />
+  </div>
+</div>
 
- <div class="petfood-hero-cta">
-    <div class="petfood-cta-text">
-      <h2>Looking for the perfect flavour match?</h2>
-      <p>Our team is ready to help you find the best solutions for your recipes.</p>
-    </div>
-    <a href="index.html#contact" class="petfood-cta-button">Write Us</a>
- </div>
-</section>
-
-    <!-- Usage areas section -->
-<!-- Usage areas section -->
-<section class="usage-areas">
-  <h2 class="usage-title">Usage Areas</h2>
-  <p class="usage-subtitle">Select your production category</p>
-
+<!-- USAGE AREAS -->
+<div class="section--slim">
+  <h2 class="section__title">Usage Areas</h2>
+  <p class="section__subtitle">Select your production category</p>
   <div class="usage-grid">
-    <div class="usage-card" data-name="Dairy Product">
-      <img src="icons/dairy-product.svg" alt="Dairy Product">
-      <span>Dairy Product</span>
-    </div>
-    <div class="usage-card" data-name="Bakery & Pastry">
-      <img src="icons/bakery-pastry.svg" alt="Bakery and Pastry">
-      <span>Bakery & Pastry</span>
-    </div>
-    <div class="usage-card" data-name="Confectionery">
-      <img src="icons/confectionery.svg" alt="Confectionery">
+    <div class="usage-card" onclick="this.classList.toggle('selected')">
+      <img src="images/icons/confectionery.svg" alt="Confectionery" />
       <span>Confectionery</span>
+      <small>Sweets, gummies, hard candy, lollipops</small>
     </div>
-    <div class="usage-card" data-name="Drinks">
-      <img src="icons/drinks.svg" alt="Drinks">
-      <span>Drinks</span>
+    <div class="usage-card" onclick="this.classList.toggle('selected')">
+      <img src="images/icons/drinks.svg" alt="Beverages" />
+      <span>Beverages</span>
+      <small>Soft drinks, juice, energy, RTD</small>
     </div>
-    <div class="usage-card" data-name="Dessert & Toppings">
-      <img src="icons/dessert-topping.svg" alt="Dessert and Toppings">
-      <span>Dessert & Toppings</span>
+    <div class="usage-card" onclick="this.classList.toggle('selected')">
+      <img src="images/icons/dairy.svg" alt="Dairy" />
+      <span>Dairy</span>
+      <small>Yoghurt, milk drinks, cream desserts</small>
     </div>
-    <div class="usage-card" data-name="Nutrition & Functional">
-      <img src="icons/nutritional.svg" alt="Nutrition and Functional">
-      <span>Nutrition & Functional</span>
+    <div class="usage-card" onclick="this.classList.toggle('selected')">
+      <img src="images/icons/bakery-pastry.svg" alt="Bakery" />
+      <span>Bakery</span>
+      <small>Cakes, muffins, pastries, fillings</small>
+    </div>
+    <div class="usage-card" onclick="this.classList.toggle('selected')">
+      <img src="images/icons/dessert-topping.svg" alt="Ice Cream" />
+      <span>Ice Cream</span>
+      <small>Gelato, frozen desserts, sorbets</small>
+    </div>
+    <div class="usage-card" onclick="this.classList.toggle('selected')">
+      <img src="images/icons/seasoning.svg" alt="Snacks and Cereals" />
+      <span>Snacks &amp; Cereals</span>
+      <small>Sweet coatings, granola, bars, cereals</small>
     </div>
   </div>
-</section>
+</div>
 
-
-
-<section class="certifications">
-  <div class="certifications-container">
-    <img src="images/fssc22000.png" alt="FSSC22000 certification" class="cert-logo">
-
-    <p class="cert-text">
-      <img src="icons/icon-check.svg" alt="check icon" class="cert-check">
-      We supply food flavours in accordance with 1334/2008/EU regulation.
-    </p>
-
-    <div class="badge">
-        <img src="images/non-gmo.png" alt="Non GMO" />
+<!-- CERT STRIP -->
+<div class="section--slim" style="padding-top:0">
+  <div class="cert-strip">
+    <div class="cert-strip__fssc">
+      <div class="cert-strip__fssc-ring">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9"/></svg>
+      </div>
+      <span class="cert-strip__fssc-label">FSSC 22000</span>
+    </div>
+    <div class="cert-strip__text">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="margin-top:2px;flex-shrink:0"><path d="M9 12l2 2 4-4" stroke-linecap="round"/><circle cx="12" cy="12" r="9"/></svg>
+      We supply food flavours in accordance with EU Regulation 1334/2008.
+    </div>
+    <div class="cert-strip__badges">
+      <div class="cert-strip__badge">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="46" stroke="#2d6a00" stroke-width="3" fill="white"/>
+          <circle cx="50" cy="50" r="36" fill="#2d6a00"/>
+          <text x="50" y="41" text-anchor="middle" fill="white" font-family="Arial" font-weight="bold" font-size="13">NON</text>
+          <text x="50" y="56" text-anchor="middle" fill="white" font-family="Arial" font-weight="bold" font-size="15">GMO</text>
+          <text x="50" y="69" text-anchor="middle" fill="white" font-family="Arial" font-size="9">PROJECT</text>
+        </svg>
         <p>All products are non GMO</p>
-    </div>
-    <div class="badge">
-        <img src="images/halal.png" alt="Halal Certified" />
+      </div>
+      <div class="cert-strip__badge">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="46" stroke="#1a5c2a" stroke-width="3" fill="white"/>
+          <circle cx="50" cy="50" r="36" fill="white" stroke="#1a5c2a" stroke-width="2"/>
+          <text x="50" y="38" text-anchor="middle" fill="#1a5c2a" font-family="Arial" font-size="9" letter-spacing="2">HALAL</text>
+          <text x="50" y="57" text-anchor="middle" fill="#1a5c2a" font-family="serif" font-size="22">&#x62D;&#x644;&#x627;&#x644;</text>
+          <text x="50" y="72" text-anchor="middle" fill="#1a5c2a" font-family="Arial" font-size="8">CERTIFIED</text>
+        </svg>
         <p>Possible for some of products</p>
-    </div>
-    <div class="badge">
-        <img src="images/kosher.png" alt="Kosher Certified" />
+      </div>
+      <div class="cert-strip__badge">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="46" stroke="#333" stroke-width="3" fill="white"/>
+          <circle cx="50" cy="50" r="36" fill="white" stroke="#333" stroke-width="2"/>
+          <text x="50" y="44" text-anchor="middle" fill="#333" font-family="Arial" font-weight="bold" font-size="30">K</text>
+          <text x="50" y="63" text-anchor="middle" fill="#333" font-family="Arial" font-size="10">KOSHER</text>
+        </svg>
         <p>Possible for some of products</p>
+      </div>
     </div>
   </div>
-</section>
+</div>
 
+<!-- FLAVOUR PROFILES -->
+<div class="section--slim" style="padding-top:0">
+  <h2 class="section__title">Some of Our Popular Sweet Flavours:</h2>
+  <p class="section__subtitle">Select your flavour interest</p>
 
-    <!-- Flavour selection list -->
-
-<section class="flavour-selection">
-  <h2>Some of Our Popular Sweet Flavours:</h2>
-  <p class="flavour-instruction">Select your flavour interest</p>
-
-  <div class="flavour-list">
-    <div class="flavour-item">Absinthe</div>
-    <div class="flavour-item">Acid Drops, type Raspberry</div>
-    <div class="flavour-item">Almond</div>
-    <div class="flavour-item">Almond Lemon/American</div>
-    <div class="flavour-item">Angelica</div>
-    <div class="flavour-item">Apple (different types)</div>
-    <div class="flavour-item">Apple Pie</div>
-    <div class="flavour-item">Apricot</div>
-    <div class="flavour-item">Arrack</div>
-    <div class="flavour-item">Avocado</div>
-    <div class="flavour-item">Baileys</div>
-    <div class="flavour-item">Banana (different types)</div>
-    <div class="flavour-item">Benedictine</div>
-    <div class="flavour-item">Bergamot</div>
-    <div class="flavour-item">Bilberry</div>
-    <div class="flavour-item">Biscuit</div>
-    <div class="flavour-item">Bitter Lemon</div>
-    <div class="flavour-item">Bitter Lemon, for Lemon Gin</div>
-    <div class="flavour-item">Black Currant</div>
-    <div class="flavour-item">Black Velvet</div>
-    <div class="flavour-item">Blackberry</div>
-    <div class="flavour-item">Blood Orange</div>
-    <div class="flavour-item">Bordeaux</div>
-    <div class="flavour-item">Bubblegum</div>
-    <div class="flavour-item">Butter</div>
-    <div class="flavour-item">Butter Cream</div>
-    <div class="flavour-item">Butter Lemon</div>
-    <div class="flavour-item">Butter Vanilla</div>
-    <div class="flavour-item">Butterscotch</div>
-    <div class="flavour-item">Californian Fruit</div>
-    <div class="flavour-item">Caffe Latte</div>
-    <div class="flavour-item">Cappuccino</div>
-    <div class="flavour-item">Caramel</div>
-    <div class="flavour-item">Cascade</div>
-    <div class="flavour-item">Cassis</div>
-    <div class="flavour-item">Champagne</div>
-    <div class="flavour-item">Champagne Cider</div>
-    <div class="flavour-item">Chartreuse</div>
-    <div class="flavour-item">Cheese (different types for bakery purposes)</div>
-    <div class="flavour-item">Cherry</div>
-    <div class="flavour-item">Cherry Amarena</div>
-    <div class="flavour-item">Cherry Brandy</div>
-    <div class="flavour-item">Chestnut</div>
-    <div class="flavour-item">Cherry Cola</div>
-    <div class="flavour-item">Chipolata</div>
-    <div class="flavour-item">Chocolate (different types)</div>
-    <div class="flavour-item">Chocolate/Rhum</div>
-    <div class="flavour-item">Cinnamon</div>
-    <div class="flavour-item">Clove</div>
-    <div class="flavour-item">Cocktail</div>
-    <div class="flavour-item">Cocoa</div>
-    <div class="flavour-item">Cocoa Melange</div>
-    <div class="flavour-item">Cocos</div>
-    <div class="flavour-item">Cocos fresh</div>
-    <div class="flavour-item">Cocos roasted</div>
-    <div class="flavour-item">Coffee</div>
-    <div class="flavour-item">Coffee Candy, type ‘Haagse Hopjes’</div>
-    <div class="flavour-item">Coffee Milk</div>
-    <div class="flavour-item">Cognac</div>
-    <div class="flavour-item">Cognac, type ‘Fine Champagne’</div>
-    <div class="flavour-item">Cola</div>
-    <div class="flavour-item">Cola Champagne</div>
-    <div class="flavour-item">Cola, type Coca Cola</div>
-    <div class="flavour-item">Confiseurs Mocha</div>
-    <div class="flavour-item">Cook spices / Cookie</div>
-    <div class="flavour-item">Cooling</div>
-    <div class="flavour-item">Cream</div>
-    <div class="flavour-item">Cream Vanilla</div>
-    <div class="flavour-item">Creambutter</div>
-    <div class="flavour-item">Creme de Cacaque</div>
-    <div class="flavour-item">Creme de Menthe</div>
-    <div class="flavour-item">Creme de Noyaux</div>
-    <div class="flavour-item">Creme de Rose</div>
-    <div class="flavour-item">Creme Soda</div>
-    <div class="flavour-item">Creme Soda</div>
-    <div class="flavour-item">Cumin liquor</div>
-    <div class="flavour-item">Curaçao (different types)</div>
-    <div class="flavour-item">Currantbread</div>
-    <div class="flavour-item">Custard</div>
-    <div class="flavour-item">Dates</div>
-    <div class="flavour-item">Dutch Caramel candy</div>
-    <div class="flavour-item">Dutch liquors (different types)</div>
-    <div class="flavour-item">Dutch ‘Speculaas’ cook spices</div>
-    <div class="flavour-item">Egg Nog (Dutch Advocaat)</div>
-    <div class="flavour-item">Elixer d’Anvers</div>
-    <div class="flavour-item">Energy Drink</div>
-    <div class="flavour-item">Eucalyptus Mint</div>
-    <div class="flavour-item">Eucamint</div>
-    <div class="flavour-item">Flavour granules for tea</div>
-    <div class="flavour-item">Foaming extract</div>
-    <div class="flavour-item">Forest Fruit</div>
-    <div class="flavour-item">Fruit candy</div>
-    <div class="flavour-item">Fruitmix, type ‘N.O.C.’</div>
-    <div class="flavour-item">Fruit Punch</div>
-    <div class="flavour-item">Fruitsoda</div>
-    <div class="flavour-item">Ginger</div>
-    <div class="flavour-item">Ginger Ale</div>
-    <div class="flavour-item">Gooseberry</div>
-    <div class="flavour-item">Grand Marnier</div>
-    <div class="flavour-item">Grape</div>
-    <div class="flavour-item">Grapefruit</div>
-    <div class="flavour-item">Green apple</div>
-    <div class="flavour-item">Grenadine</div>
-    <div class="flavour-item">Hazelnut (different types)</div>
-    <div class="flavour-item">Honey (different types)</div>
-    <div class="flavour-item">IcePunch</div>
-    <div class="flavour-item">Irish Coffee</div>
-    <div class="flavour-item">Jamaica Rhum</div>
-    <div class="flavour-item">Jamaica Rhum dark Dip Liquor</div>
-    <div class="flavour-item">Kirsch (different types)</div>
-    <div class="flavour-item">Kiwi</div>
-    <div class="flavour-item">Lemon</div>
-    <div class="flavour-item">Lemon Gin</div>
-    <div class="flavour-item">Lemon Lime</div>
-    <div class="flavour-item">Lemon Lime, type ‘Seven Up’</div>
-    <div class="flavour-item">Lemon-squash</div>
-    <div class="flavour-item">Lemonbitter</div>
-    <div class="flavour-item">Licorice</div>
-    <div class="flavour-item">Licorice, type Dutch ‘Griotten’</div>
-    <div class="flavour-item">Lime</div>
-    <div class="flavour-item">Lime Tonic</div>
-    <div class="flavour-item">Lychee</div>
-    <div class="flavour-item">Madeira</div>
-    <div class="flavour-item">Malaga</div>
-    <div class="flavour-item">Malt Vinegar</div>
-    <div class="flavour-item">Malt Wine</div>
-    <div class="flavour-item">Mango (different types)</div>
-    <div class="flavour-item">Maple</div>
-    <div class="flavour-item">Maracuja</div>
-    <div class="flavour-item">Maraschinno</div>
-    <div class="flavour-item">Marshmellow</div>
-    <div class="flavour-item">Martinique Rhum</div>
-    <div class="flavour-item">Marzipan</div>
-    <div class="flavour-item">Melon (different types)</div>
-    <div class="flavour-item">Menthol</div>
-    <div class="flavour-item">Menthol Eucalyptus</div>
-    <div class="flavour-item">Milk Caramel</div>
-    <div class="flavour-item">Milk Cream</div>
-    <div class="flavour-item">Milkcchocolate</div>
-    <div class="flavour-item">Mocha extract, type ‘Haagse Hopjes’</div>
-    <div class="flavour-item">Mulberry</div>
-    <div class="flavour-item">Neroli for Marzipan</div>
-    <div class="flavour-item">Nougat</div>
-    <div class="flavour-item">Nut (different types)</div>
-    <div class="flavour-item">Oat-straw</div>
-    <div class="flavour-item">Orange (different types)</div>
-    <div class="flavour-item">Orange Blossom</div>
-    <div class="flavour-item">Orange Mint</div>
-    <div class="flavour-item">Panettone</div>
-    <div class="flavour-item">Passion Fruit</div>
-    <div class="flavour-item">Pastille</div>
-    <div class="flavour-item">Peach (different types)</div>
-    <div class="flavour-item">Peanut (different types)</div>
-    <div class="flavour-item">Pear</div>
-    <div class="flavour-item">Pear, type Bergamotpear</div>
-    <div class="flavour-item">Pear, type Williamspear</div>
-    <div class="flavour-item">Peppermint</div>
-    <div class="flavour-item">Persico Brandy Dip Liquor</div>
-    <div class="flavour-item">Pineapple (different types)</div>
-    <div class="flavour-item">Pistachio</div>
-    <div class="flavour-item">Porte à Porte</div>
-    <div class="flavour-item">Portugal</div>
-    <div class="flavour-item">Prune</div>
-    <div class="flavour-item">Punch</div>
-    <div class="flavour-item">Raspberry</div>
-    <div class="flavour-item">Redcurrant</div>
-    <div class="flavour-item">Reine Claude</div>
-    <div class="flavour-item">Rhum (different types)</div>
-    <div class="flavour-item">Rootbeer</div>
-    <div class="flavour-item">Rootbitter</div>
-    <div class="flavour-item">Rose</div>
-    <div class="flavour-item">Rosemary</div>
-    <div class="flavour-item">Sarsaparilla</div>
-    <div class="flavour-item">Sherry</div>
-    <div class="flavour-item">Spearmint</div>
-    <div class="flavour-item">Spice Bitter</div>
-    <div class="flavour-item">Stracciatella</div>
-    <div class="flavour-item">Strawberry (different types)</div>
-    <div class="flavour-item">Star anise</div>
-    <div class="flavour-item">Tamarind</div>
-    <div class="flavour-item">Tamarind Licorice</div>
-    <div class="flavour-item">Thyme</div>
-    <div class="flavour-item">Toffee Caramel</div>
-    <div class="flavour-item">Toffee Cream</div>
-    <div class="flavour-item">Tonic</div>
-    <div class="flavour-item">Triple Sec</div>
-    <div class="flavour-item">Tropical</div>
-    <div class="flavour-item">Tutti Frutti</div>
-    <div class="flavour-item">Vanilla (different types)</div>
-    <div class="flavour-item">Vanilla Bourbon</div>
-    <div class="flavour-item">Vanillica</div>
-    <div class="flavour-item">Vermouth (different types)</div>
-    <div class="flavour-item">Violette</div>
-    <div class="flavour-item">Walnut (different types)</div>
-    <div class="flavour-item">Whipped cream</div>
-    <div class="flavour-item">Whiskey (different types)</div>
-    <div class="flavour-item">Wodka</div>
-    <div class="flavour-item">Yoghurt</div>
+  <div class="flavour-section">
+    <div class="flavour-section__title" onclick="toggleGroup(this)">
+      Fruit &mdash; Berries
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="flavour-items open">
+      <div class="flavour-item" onclick="selectFlavour(this)">Strawberry</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Raspberry</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Blueberry</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Blackberry</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Blackcurrant</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Redcurrant</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Gooseberry</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Cranberry</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Elderberry</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Acai</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Boysenberry</div>
+    </div>
   </div>
-  <button class="send-button" disabled>Send Us</button>
-</section>
 
+  <div class="flavour-section">
+    <div class="flavour-section__title" onclick="toggleGroup(this)">
+      Fruit &mdash; Citrus
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="flavour-items">
+      <div class="flavour-item" onclick="selectFlavour(this)">Lemon</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Lime</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Orange</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Blood Orange</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Grapefruit</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Mandarin</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Bergamot</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Yuzu</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Pomelo</div>
+    </div>
+  </div>
 
-    <!-- CTA form -->
+  <div class="flavour-section">
+    <div class="flavour-section__title" onclick="toggleGroup(this)">
+      Fruit &mdash; Tropical &amp; Exotic
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="flavour-items">
+      <div class="flavour-item" onclick="selectFlavour(this)">Mango</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Pineapple</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Passion Fruit</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Guava</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Papaya</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Lychee</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Coconut</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Banana</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Kiwi</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Dragon Fruit</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Tamarind</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Jackfruit</div>
+    </div>
+  </div>
 
-<div class="popup-overlay hidden">
-  <div class="popup">
-    <div class="popup-content">
-      <p class="popup-title">Let’s connect and work together!</p>
+  <div class="flavour-section">
+    <div class="flavour-section__title" onclick="toggleGroup(this)">
+      Fruit &mdash; Stone &amp; Orchard
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="flavour-items">
+      <div class="flavour-item" onclick="selectFlavour(this)">Peach</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Apricot</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Cherry</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Sweet Cherry</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Plum</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Nectarine</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Apple</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Pear</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Quince</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Fig</div>
+    </div>
+  </div>
 
-      <div class="popup-section">
-        <h4>Your Selected Category:</h4>
-        <div id="selectedCategory" class="popup-selected"></div>
+  <div class="flavour-section">
+    <div class="flavour-section__title" onclick="toggleGroup(this)">
+      Vanilla &amp; Dairy
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="flavour-items">
+      <div class="flavour-item" onclick="selectFlavour(this)">Vanilla Bourbon</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Vanilla Tahitian</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Vanilla Custard</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Butter</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Cream</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Milk</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Yoghurt</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Sour Cream</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Cheese Cake</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Crème Brûlée</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Condensed Milk</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Dulce de Leche</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Clotted Cream</div>
+    </div>
+  </div>
+
+  <div class="flavour-section">
+    <div class="flavour-section__title" onclick="toggleGroup(this)">
+      Chocolate &amp; Caramel
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="flavour-items">
+      <div class="flavour-item" onclick="selectFlavour(this)">Dark Chocolate</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Milk Chocolate</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">White Chocolate</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Cocoa</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Cacao Nibs</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Caramel</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Salted Caramel</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Toffee</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Butterscotch</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Praline</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Hazelnut Praline</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Nougat</div>
+    </div>
+  </div>
+
+  <div class="flavour-section">
+    <div class="flavour-section__title" onclick="toggleGroup(this)">
+      Bakery &amp; Pastry
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="flavour-items">
+      <div class="flavour-item" onclick="selectFlavour(this)">Honey</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Maple Syrup</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Brown Sugar</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Cinnamon</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Gingerbread</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Speculoos</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Waffle</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Brioche</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Croissant</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Madeleine</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Chestnut</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Almond Cream</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Marzipan</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Frangipane</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Cheesecake</div>
+    </div>
+  </div>
+
+  <div class="flavour-section">
+    <div class="flavour-section__title" onclick="toggleGroup(this)">
+      Nuts
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="flavour-items">
+      <div class="flavour-item" onclick="selectFlavour(this)">Hazelnut</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Almond</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Pistachio</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Walnut</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Pecan</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Macadamia</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Cashew</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Peanut</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Coconut</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Chestnut</div>
+    </div>
+  </div>
+
+  <div class="flavour-section">
+    <div class="flavour-section__title" onclick="toggleGroup(this)">
+      Floral &amp; Botanical
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="flavour-items">
+      <div class="flavour-item" onclick="selectFlavour(this)">Rose</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Violet</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Elderflower</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Lavender</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Jasmine</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Lychee Rose</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Hibiscus</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Chamomile</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Mint</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Spearmint</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Peppermint</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Basil</div>
+    </div>
+  </div>
+
+  <div class="flavour-section">
+    <div class="flavour-section__title" onclick="toggleGroup(this)">
+      Sweet Spices &amp; Exotic
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="flavour-items">
+      <div class="flavour-item" onclick="selectFlavour(this)">Cardamom</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Star Anise</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Licorice</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Tonka Bean</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Saffron</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Rosewater</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Orange Blossom</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Pomegranate</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Tamarind</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Pandan</div>
+    </div>
+  </div>
+
+  <button class="send-btn" id="sendBtn" onclick="openPopup()">Select flavours above to request a brief</button>
+</div>
+
+<!-- FAQ -->
+<div class="section--slim" style="padding-top:0">
+  <h2 class="section__title">Frequently Asked Questions</h2>
+  <div class="faq__list">
+    <div class="faq__item open">
+      <button class="faq__question" onclick="toggleFaq(this)">
+        <span>Can I get a natural vanilla that actually declares as "natural flavouring"?</span>
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="faq__answer"><p>Yes. We supply natural vanilla flavours compliant with EU 1334/2008 that declare as "natural vanilla flavouring" or "natural flavouring" depending on your formulation. We can also advise on FTNF (from the named food) classification if that is your target.</p></div>
+    </div>
+    <div class="faq__item">
+      <button class="faq__question" onclick="toggleFaq(this)">
+        <span>Do your fruit flavours work in low-pH beverages?</span>
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="faq__answer"><p>Yes. Most of our fruit flavour systems are designed with acid-stability in mind. Tell us your pH range, Brix, and any thermal treatment and we will confirm compatibility or develop accordingly.</p></div>
+    </div>
+    <div class="faq__item">
+      <button class="faq__question" onclick="toggleFaq(this)">
+        <span>Can you convert my existing artificial flavour to natural status?</span>
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="faq__answer"><p>Yes — natural conversion is one of our four core services. Bring us your current flavour reference and target declaration. We develop a natural equivalent that maintains the profile your customers already know.</p></div>
+    </div>
+    <div class="faq__item">
+      <button class="faq__question" onclick="toggleFaq(this)">
+        <span>Do you supply powder and liquid formats?</span>
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="faq__answer"><p>Yes. Both liquid and spray-dried powder formats are available. Tell us your application and process and we will recommend the right carrier and format.</p></div>
+    </div>
+    <div class="faq__item">
+      <button class="faq__question" onclick="toggleFaq(this)">
+        <span>Are your sweet flavours suitable for sugar-free and low-calorie products?</span>
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="faq__answer"><p>Yes. We can advise on masking off-notes from high-intensity sweeteners such as stevia, sucralose, or acesulfame-K, and round the profile to reduce the metallic or bitter aftertaste common in reformulated products.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="section--slim" id="contact" style="padding-top:0">
+  <div class="contact-section">
+    <div class="contact-grid">
+      <div>
+        <h2>Contact us</h2>
+        <p class="sub">Tell us what you are working on. We reply within one business day.</p>
+        <div class="contact-info-item">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round"/></svg>
+          Varna, Bulgaria
+        </div>
+        <div class="contact-info-item">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round"/></svg>
+          info@atmarbio.com
+        </div>
+        <div class="contact-socials">
+          <a href="https://www.linkedin.com/in/atmar-bio-ltd-0812aa182/" target="_blank" aria-label="LinkedIn">
+            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="https://www.instagram.com/atmarbio/" target="_blank" aria-label="Instagram">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><path d="M17.5 6.5h.01"/></svg>
+          </a>
+          <a href="https://www.facebook.com/foodflavorsandcolorants/" target="_blank" aria-label="Facebook">
+            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+        </div>
       </div>
-
-      <div class="popup-section">
-        <h4>Your Flavour Interest:</h4>
-        <div id="selectedFlavours" class="popup-flavours"></div>
-      </div>
-
-      <form id="popupForm">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" placeholder="Name and surname">
-
-        <label for="email">Email <span style="color:red">*</span></label>
-        <input type="email" id="email" name="email" placeholder="Your email address" required>
-
-        <label for="message">Message</label>
-        <textarea id="message" name="message" placeholder="Just type your words here..."></textarea>
-
-        <button type="submit" class="button purple fullwidth">Send Message</button>
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <label>Name<input type="text" placeholder="Your name" required /></label>
+        <label>Company<input type="text" placeholder="Company name" /></label>
+        <label>Email<input type="email" placeholder="your@email.com" required /></label>
+        <label>Category
+          <select>
+            <option selected>Sweet Flavours</option>
+            <option>Savoury Flavours</option>
+            <option>Alcoholic &amp; Liquor</option>
+            <option>Pet Food &amp; Feed</option>
+            <option>Coffee Flavours</option>
+            <option>Clean Label</option>
+            <option>Vegan Flavours</option>
+            <option>Other</option>
+          </select>
+        </label>
+        <label>Message<textarea placeholder="Describe your application, target profile, and regulatory market..."></textarea></label>
+        <button type="submit">Send message</button>
       </form>
     </div>
   </div>
 </div>
 
-  </main>
-
-  <!-- Footer -->
+<!-- FOOTER -->
 <footer class="footer">
   <div class="footer__top">
     <div class="footer__brand">
@@ -460,7 +665,7 @@
         <ul>
           <li><a href="sweetflavours.html">Sweet Flavours</a></li>
           <li><a href="savouryflavours.html">Savoury Flavours</a></li>
-          <li><a href="alcoholicandliquorflavours.html">Alcoholic & Liquor Flavours</a></li>
+          <li><a href="alcoholicandliquorflavours.html">Alcoholic &amp; Liquor Flavours</a></li>
           <li><a href="petfood.html">Pet Food Flavours</a></li>
           <li><a href="tobaccoflavours.html">Tobacco Flavours</a></li>
           <li><a href="fragrances.html">Fragrances</a></li>
@@ -468,8 +673,8 @@
       </div>
       <div>
         <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About Us</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#about">About Us</a></li>
           <li><a href="index.html#contact">Contact Us</a></li>
           <li><a href="blog.html">Blog</a></li>
           <li><a href="#">Paulownia</a></li>
@@ -479,12 +684,84 @@
     </div>
   </div>
   <div class="footer__bottom">
-    <p>© 2025 Atmar Bio | Food Ingredients & Flavours</p>
+    <p>© 2025 Atmar Bio | Food Ingredients &amp; Flavours</p>
     <a href="#">Privacy Policy</a>
   </div>
 </footer>
 
-<script src="script.js"></script>
+<!-- POPUP -->
+<div class="popup-overlay" id="popupOverlay">
+  <div class="popup">
+    <h3>Request a brief</h3>
+    <p style="font-size:13px;color:#6B7280;margin-top:4px">Selected flavours:</p>
+    <div class="popup__selected" id="popupTags"></div>
+    <div class="popup__form">
+      <label>Name<input type="text" placeholder="Your name" /></label>
+      <label>Email<input type="email" placeholder="your@email.com" /></label>
+      <label>Application &amp; notes<textarea placeholder="Tell us what you are making..."></textarea></label>
+    </div>
+    <div class="popup__btns">
+      <button class="popup__send" onclick="submitPopup()">Send brief</button>
+      <button class="popup__cancel" onclick="closePopup()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function openSidebar() { document.getElementById('sidebar').classList.add('open'); document.getElementById('overlay').classList.add('open'); }
+  function closeSidebar() { document.getElementById('sidebar').classList.remove('open'); document.getElementById('overlay').classList.remove('open'); }
+  function toggleDropdown(e) {
+    e.preventDefault();
+    const dropdown = document.getElementById('productsDropdown');
+    dropdown.classList.toggle('open');
+  }
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('#productsDropdown')) {
+      document.getElementById('productsDropdown').classList.remove('open');
+    }
+  });
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq__item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq__item').forEach(el => el.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+  function toggleGroup(el) {
+    const items = el.nextElementSibling;
+    el.classList.toggle('open');
+    items.classList.toggle('open');
+  }
+  let selected = [];
+  function selectFlavour(el) {
+    el.classList.toggle('selected');
+    const name = el.textContent.trim();
+    if (el.classList.contains('selected')) { selected.push(name); } else { selected = selected.filter(s => s !== name); }
+    const btn = document.getElementById('sendBtn');
+    if (selected.length > 0) {
+      btn.classList.add('active');
+      btn.textContent = 'Request a brief for ' + selected.length + ' flavour' + (selected.length > 1 ? 's' : '');
+    } else {
+      btn.classList.remove('active');
+      btn.textContent = 'Select flavours above to request a brief';
+    }
+  }
+  function openPopup() {
+    if (!selected.length) return;
+    const tags = document.getElementById('popupTags');
+    tags.innerHTML = selected.map(s => '<span class="popup__tag">' + s + '</span>').join('');
+    document.getElementById('popupOverlay').classList.add('open');
+  }
+  function closePopup() { document.getElementById('popupOverlay').classList.remove('open'); }
+  function submitPopup() {
+    const btn = document.querySelector('.popup__send');
+    btn.textContent = 'Sent!'; btn.style.background = '#99AF61'; btn.disabled = true;
+    setTimeout(closePopup, 1500);
+  }
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button');
+    btn.textContent = 'Sent! We will be in touch.'; btn.style.background = '#99AF61'; btn.disabled = true;
+  }
+</script>
 </body>
 </html>
-
