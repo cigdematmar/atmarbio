@@ -1,346 +1,607 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Savoury Flavours for Food Products | EU-Origin & Customised | Atmar Bio</title>
-    <meta name="description" content="Discover our EU-origin savoury flavours for snacks, ready meals, soups, sauces, and more. Safe, customisable, and designed for full sensory impact.">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Savoury Flavours for Food Products | EU Supply | Atmar Bio</title>
+  <meta name="description" content="Meat, cheese, herb, smoke, umami, and vegetable flavours for soups, sauces, ready meals, snacks, and plant-based. EU-origin, documented, custom development." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="icon" href="icons/favicon.ico" type="image/x-icon" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: #19162D; background: white; }
+    :root {
+      --purple: #4A4387; --purple-dark: #312D5A; --purple-light: #B7B3D7;
+      --green: #99AF61; --lime: #CCE981; --lime-bg: #D5ED98;
+      --grey-light: #f1f1f1; --grey-text: #6B7280; --grey-border: #E5E7EB;
+    }
+    /* NAV */
+    .nav-wrapper { background: white; border-bottom: 1px solid var(--grey-border); position: sticky; top: 0; z-index: 100; }
+    .nav__container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; }
+    .nav__logo img { height: 28px; }
+    .nav__hamburger { cursor: pointer; }
+    .nav__hamburger svg { width: 22px; height: 22px; }
+    .nav__desktop { display: none; gap: 28px; align-items: center; }
+    .nav__desktop a { font-size: 14px; font-weight: 500; color: #1F2937; text-decoration: none; transition: color .2s; }
+    .nav__desktop a:hover { color: var(--purple-light); }
+    .nav__desktop a.active { color: var(--green); }
+    .dropdown { position: relative; }
+    .dropdown > a { display: flex; align-items: center; gap: 4px; }
+    .dropdown-menu { display: none; position: absolute; top: calc(100% + 8px); left: 0; background: white; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); min-width: 220px; padding: 8px 0; z-index: 200; }
+    .dropdown:hover .dropdown-menu { display: block; }
+    .dropdown-menu a { display: block; padding: 10px 16px; font-size: 14px; color: var(--purple); text-decoration: none; }
+    .dropdown-menu a:hover { background: var(--grey-light); }
+    .nav__cta { background: var(--purple); color: white !important; padding: 8px 18px; border-radius: 8px; font-weight: 600 !important; }
+    @media(min-width: 1024px) { .nav__hamburger { display: none; } .nav__desktop { display: flex; } }
+    /* SIDEBAR */
+    .sidebar-overlay { position: fixed; inset: 0; background: rgba(25,22,45,.45); opacity: 0; pointer-events: none; transition: opacity .3s; z-index: 200; }
+    .sidebar-overlay.open { opacity: 1; pointer-events: all; }
+    .sidebar { position: fixed; top: 0; left: -85%; width: 85%; max-width: 320px; height: 100%; background: white; transition: left .3s ease; z-index: 201; padding: 24px 20px; overflow-y: auto; }
+    .sidebar.open { left: 0; }
+    .sidebar__header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; }
+    .sidebar__header img { height: 24px; }
+    .sidebar a { display: block; padding: 10px 4px; font-size: 15px; font-weight: 500; color: #19162D; text-decoration: none; border-bottom: 1px solid #F3F4F6; }
+    .sidebar a:hover { color: var(--green); }
+    .sidebar__section-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--green); margin: 20px 0 6px; }
+    .sidebar .sub-link { padding: 8px 4px 8px 16px; font-size: 14px; font-weight: 400; }
+    /* HERO */
+    .page-hero { max-width: 1200px; margin: 0 auto; padding: 40px 20px 0; display: grid; grid-template-columns: 1fr; gap: 32px; }
+    @media(min-width: 768px) { .page-hero { grid-template-columns: 1fr 1fr; align-items: center; padding: 48px 20px 0; } }
+    .page-hero__tag { display: inline-flex; align-items: center; gap: 6px; background: #F0EFF8; color: var(--purple); font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 20px; margin-bottom: 16px; }
+    .page-hero__tag span { width: 6px; height: 6px; background: var(--green); border-radius: 50%; }
+    .page-hero h1 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(26px, 4vw, 44px); line-height: 1.15; color: var(--purple-dark); margin-bottom: 14px; }
+    .page-hero__sub { font-size: 15px; color: var(--grey-text); line-height: 1.65; margin-bottom: 28px; }
+    .page-hero__cta { background: var(--purple-dark); border-radius: 8px; padding: 20px 22px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .page-hero__cta p { color: rgba(255,255,255,.9); font-size: 14px; flex: 1; min-width: 160px; }
+    .page-hero__cta a { background: white; color: var(--purple); font-size: 14px; font-weight: 700; padding: 10px 20px; border-radius: 8px; text-decoration: none; white-space: nowrap; flex-shrink: 0; }
+    .page-hero__cta a:hover { background: var(--lime); }
+    .page-hero__image { border-radius: 16px; overflow: hidden; }
+    .page-hero__image img { width: 100%; height: 320px; object-fit: cover; display: block; border-radius: 16px; }
+    @media(min-width: 768px) { .page-hero__image img { height: 380px; } }
+    /* SECTION */
+    .section { padding: 56px 20px; max-width: 1200px; margin: 0 auto; }
+    .section--slim { padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
+    .section__label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--green); margin-bottom: 8px; }
+    .section__title { font-family: 'Libre Baskerville', serif; font-size: clamp(20px, 3vw, 28px); font-weight: 700; color: var(--purple-dark); margin-bottom: 6px; }
+    .section__subtitle { font-size: 14px; color: var(--grey-text); margin-bottom: 28px; }
+    /* USAGE AREAS */
+    .usage-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    @media(min-width: 600px) { .usage-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media(min-width: 900px) { .usage-grid { grid-template-columns: repeat(6, 1fr); } }
+    .usage-card { background: #F9F9F9; border-radius: 8px; padding: 20px 12px; text-align: center; cursor: pointer; transition: background .25s; display: flex; flex-direction: column; align-items: center; gap: 10px; border: 2px solid transparent; }
+    .usage-card:hover, .usage-card.selected { background: var(--purple-light); border-color: var(--purple-light); }
+    .usage-card img { width: 32px; height: 32px; object-fit: contain; }
+    .usage-card span { font-size: 13px; font-weight: 500; color: #1F2937; line-height: 1.3; }
+    .usage-card small { font-size: 11px; color: #9CA3AF; line-height: 1.3; }
+    /* CERT STRIP */
+    .cert-strip { border: 1px solid var(--grey-border); border-radius: 10px; padding: 20px 24px; display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between; }
+    .cert-strip__fssc { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+    .cert-strip__fssc-ring { width: 24px; height: 24px; border-radius: 50%; border: 2px solid var(--green); display: flex; align-items: center; justify-content: center; }
+    .cert-strip__fssc-ring svg { width: 12px; height: 12px; color: var(--green); }
+    .cert-strip__fssc-label { font-size: 14px; font-weight: 700; color: #1F2937; }
+    .cert-strip__text { font-size: 13px; color: #6B7280; line-height: 1.6; flex: 1; min-width: 200px; display: flex; gap: 8px; align-items: flex-start; }
+    .cert-strip__text svg { flex-shrink: 0; color: var(--green); margin-top: 2px; }
+    .cert-strip__badges { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+    .cert-strip__badge { text-align: center; }
+    .cert-strip__badge svg { width: 48px; height: 48px; display: block; margin: 0 auto 4px; }
+    .cert-strip__badge p { font-size: 10px; color: #9CA3AF; max-width: 80px; line-height: 1.3; }
+    /* FLAVOUR LIST */
+    .flavour-section { margin-bottom: 32px; }
+    .flavour-section__title { font-family: 'Libre Baskerville', serif; font-size: 16px; font-weight: 700; color: var(--purple); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--grey-border); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    .flavour-section__title svg { transition: transform .25s; flex-shrink: 0; }
+    .flavour-section__title.open svg { transform: rotate(180deg); }
+    .flavour-items { display: none; grid-template-columns: 1fr 1fr; gap: 4px 16px; margin-top: 8px; }
+    @media(min-width: 600px) { .flavour-items { grid-template-columns: repeat(3, 1fr); } }
+    .flavour-items.open { display: grid; }
+    .flavour-item { padding: 8px 10px; border-radius: 4px; font-size: 13px; color: #374151; cursor: pointer; transition: background .15s; }
+    .flavour-item:hover { background: var(--grey-light); }
+    .flavour-item.selected { background: var(--purple-light); color: white; }
+    .send-btn { width: 100%; background: var(--purple); color: white; padding: 13px; border: none; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: not-allowed; opacity: .5; margin-top: 16px; transition: opacity .2s; }
+    .send-btn.active { cursor: pointer; opacity: 1; }
+    /* FAQ */
+    .faq__list { border: 1px solid var(--grey-border); border-radius: 10px; overflow: hidden; }
+    .faq__item { border-bottom: 1px solid var(--grey-border); }
+    .faq__item:last-child { border-bottom: none; }
+    .faq__question { width: 100%; background: none; border: none; padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; text-align: left; gap: 16px; }
+    .faq__question span { font-size: 14px; font-weight: 600; color: #1F2937; }
+    .faq__question svg { flex-shrink: 0; color: var(--purple); transition: transform .25s; }
+    .faq__item.open .faq__question svg { transform: rotate(180deg); }
+    .faq__answer { max-height: 0; overflow: hidden; transition: max-height .3s ease; }
+    .faq__answer p { padding: 0 20px 16px; font-size: 13px; color: var(--grey-text); line-height: 1.7; }
+    .faq__item.open .faq__answer { max-height: 300px; }
+    /* CONTACT */
+    .contact-section { background: var(--lime-bg); border-radius: 10px; padding: 40px 28px; }
+    .contact-grid { display: grid; gap: 40px; }
+    @media(min-width: 768px) { .contact-grid { grid-template-columns: 1fr 1fr; } }
+    .contact-section h2 { font-family: 'Libre Baskerville', serif; font-size: 24px; font-weight: 700; color: var(--purple); margin-bottom: 8px; }
+    .contact-section .sub { font-style: italic; font-size: 14px; color: var(--purple); margin-bottom: 20px; opacity: .8; }
+    .contact-info-item { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--purple); margin-bottom: 10px; }
+    .contact-socials { display: flex; gap: 12px; margin-top: 20px; }
+    .contact-socials a { width: 36px; height: 36px; border-radius: 8px; background: var(--purple); display: flex; align-items: center; justify-content: center; }
+    .contact-socials svg { width: 16px; height: 16px; color: white; }
+    .contact-form { display: flex; flex-direction: column; gap: 14px; }
+    .contact-form label { font-size: 13px; font-weight: 600; color: #1F2937; display: flex; flex-direction: column; gap: 6px; }
+    .contact-form input, .contact-form textarea, .contact-form select { padding: 12px 14px; border: 1px solid #D1D5DB; border-radius: 8px; font-size: 14px; font-family: 'Inter', sans-serif; color: #374151; background: white; }
+    .contact-form input:focus, .contact-form textarea:focus, .contact-form select:focus { outline: none; border-color: var(--purple); }
+    .contact-form textarea { min-height: 90px; resize: vertical; }
+    .contact-form button { background: var(--purple); color: white; padding: 13px; border: none; border-radius: 8px; font-weight: 700; font-size: 15px; cursor: pointer; }
+    .contact-form button:hover { background: var(--purple-dark); }
+    /* POPUP */
+    .popup-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.5); align-items: center; justify-content: center; z-index: 9999; display: none; }
+    .popup-overlay.open { display: flex; }
+    .popup { background: white; padding: 28px; border-radius: 10px; max-width: 420px; width: 92%; }
+    .popup h3 { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--purple); margin-bottom: 6px; }
+    .popup__selected { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0; }
+    .popup__tag { background: #F9F9F9; border-radius: 4px; padding: 4px 10px; font-size: 12px; color: #374151; }
+    .popup__form label { display: block; font-size: 13px; font-weight: 600; color: #1F2937; margin-top: 14px; margin-bottom: 5px; }
+    .popup__form input, .popup__form textarea { width: 100%; padding: 10px 12px; border: 1px solid var(--grey-border); border-radius: 8px; font-size: 13px; font-family: 'Inter', sans-serif; }
+    .popup__form textarea { min-height: 70px; resize: vertical; }
+    .popup__btns { display: flex; gap: 10px; margin-top: 16px; }
+    .popup__btns button { flex: 1; padding: 11px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; border: none; }
+    .popup__send { background: var(--purple); color: white; }
+    .popup__cancel { background: var(--grey-light); color: #374151; }
+    /* FOOTER (homepage style) */
+    .footer { background: #FFFFFF; padding: 20px; font-family: 'Inter', sans-serif; color: #4D4D4D; }
+    .footer__top { display: flex; flex-direction: column; gap: 24px; }
+    .footer__brand { display: flex; justify-content: space-between; align-items: center; padding-bottom: 16px; border-bottom: 1px solid #D9DDE8; margin-bottom: 16px; }
+    .footer__logo { height: 32px; }
+    .footer__socials { display: flex; gap: 0; }
+    .footer__socials a { display: inline-flex; background: transparent; width: auto; height: auto; border-radius: 0; }
+    .footer__socials a img { width: 24px; height: 24px; margin-left: 12px; }
+    .footer__links { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding-bottom: 16px; border-bottom: 1px solid #D9DDE8; margin-bottom: 16px; }
+    .footer__links h3 { font-size: 12px; font-weight: 400; margin-bottom: 8px; }
+    .footer__links ul { list-style: none; padding: 0; }
+    .footer__links li a { font-size: 12px; font-weight: 600; color: #4D4D4D; text-decoration: none; display: block; margin-bottom: 6px; }
+    .footer__links li a:hover { color: var(--purple); }
+    .footer__bottom { display: flex; justify-content: space-between; margin-top: 24px; font-size: 10px; }
+    .footer__bottom a { color: #4D4D4D; text-decoration: none; font-weight: 400; }
+    .footer a { text-decoration: none; color: inherit; }
+    .footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
 
-    <link rel="icon" href="icons/favicon.ico" type="image/x-icon">
-  </head>
-  <body>
-
-  <!-- Header (menu) -->
-<header>
-  <div class="nav-wrapper">
-    <!-- Navigation -->
-    <nav class="nav" role="navigation" aria-label="Main Navigation">
-      <div class="nav__container">
-        <div class="nav__logo">
-          <a href="index.html">
-            <img src="images/atmarbio-logo-desktop.svg" alt="Atmar Bio logo - food ingredients supplier" class="logo" loading="lazy">
-          </a>
-        </div>
-
-        <div class="nav__menu-items">
-          <div class="dropdown">
-            <a href="#" class="active">Products
-              <img src="icons/dropdown-arrow.svg" alt="dropdown arrow" class="dropdown-arrow">
-            </a>
-            <div class="dropdown-content">
-              <a href="sweetflavours.html">Sweet Flavours</a>
-              <a href="savouryflavours.html">Savoury Flavours</a>
-              <a href="alcoholicandliquorflavours.html">Alcoholic & Liquor Flavours</a>
-              <a href="petfood.html">Pet Food Flavours</a>
-              <a href="coffeeflavours.html">Coffee Flavours</a>
-              <a href="tobaccoflavours.html">Tobacco Flavours</a>
-              <a href="cleanlabelflavours.html">Clean Label Flavours</a>
-              <a href="veganflavours.html">Vegan Flavours</a>
-              <a href="fragrances.html">Fragrances</a>
-            </div>
-          </div>
-          <a href="blog.html">Blog</a>
-          <a href="#contact">Contact</a>
-        </div>
-
-        <div class="nav__menu-icon" role="button" aria-label="Open menu">
-          <img src="icons/menu-icon.svg" alt="Menu icon">
-        </div>
-      </div>
-    </nav>
-  </div>
-</header>
-
-
-<!-- Sidebar Overlay -->
-<div class="sidebar-overlay"></div>
-
-<!-- Sidebar -->
-<aside class="sidebar">
+<div class="sidebar-overlay" id="overlay" onclick="closeSidebar()"></div>
+<aside class="sidebar" id="sidebar">
   <div class="sidebar__header">
-    <img src="images/atmarbio-logo-mobile.svg" alt="Atmar Bio logo" class="sidebar__logo" />
-    <img src="icons/close-icon.svg" alt="Close menu" class="sidebar__close" role="button" aria-label="Close menu" />
+    <img src="images/atmarbio-logo-desktop.svg" alt="Atmar Bio" />
+    <button onclick="closeSidebar()" style="background:none;border:none;cursor:pointer;padding:4px">
+      <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12" stroke-linecap="round"/></svg>
+    </button>
   </div>
-
-  <nav class="sidebar__content">
-    <div class="sidebar__section">
-      <a href="index.html" class="sidebar__item">
-        <img src="icons/icon-home.svg" alt="Home icon" class="sidebar__icon" />␊
-        <span>Home</span>␊
-      </a>
-
-      <!-- Products header -->
-      <div class="sidebar__item sidebar__products-header">
-        <img src="icons/icon-products.svg" alt="Products icon" class="sidebar__icon" />
-        <span>Products</span>
-      </div>
-
-      <!-- Products list -->
-      <ul class="sidebar__products">␊
-        <li><a href="sweetflavours.html">Sweet Flavours</a></li>
-        <li><a href="savouryflavours.html">Savoury Flavours</a></li>
-        <li><a href="alcoholicandliquorflavours.html">Alcoholic & Liquor Flavours</a></li>
-        <li><a href="petfood.html">Pet Food Flavours</a></li>
-        <li><a href="coffeeflavours.html">Coffee Flavours</a></li>
-        <li><a href="tobaccoflavours.html">Tobacco Flavours</a></li>
-        <li><a href="cleanlabelflavours.html">Clean Label Flavours</a></li>
-        <li><a href="veganflavours.html">Vegan Flavours</a></li>
-        <li><a href="fragrances.html">Fragrances</a></li>
-        <li><a href="#">Salep</a></li>
-        <li><a href="#">Paulownia</a></li>
-      </ul>␊
-
-      <a href="index.html#about" class="sidebar__item">
-        <img src="icons/icon-about-us.svg" alt="About us icon" class="sidebar__icon" />␊
-        <span>About Us</span>␊
-      </a>
-
-      <a href="#" class="sidebar__item">
-        <img src="icons/icon-blog.svg" alt="Blog icon" class="sidebar__icon" />␊
-        <span>Blog</span>␊
-      </a>
-
-      <a href="index.html#contact" class="sidebar__item">
-        <img src="icons/icon-contact.svg" alt="Contact icon" class="sidebar__icon" />␊
-        <span>Contact</span>␊
-      </a>
-    </div>
-  </nav>
+  <a href="index.html">Home</a>
+  <a href="index.html#about">About Us</a>
+  <div class="sidebar__section-title">Products</div>
+  <a class="sub-link" href="sweetflavours.html">Sweet Flavours</a>
+  <a class="sub-link" href="savouryflavours.html" style="color:var(--green)">Savoury Flavours</a>
+  <a class="sub-link" href="alcoholicandliquorflavours.html">Alcoholic &amp; Liquor</a>
+  <a class="sub-link" href="petfood.html">Pet Food &amp; Feed</a>
+  <a class="sub-link" href="coffeeflavours.html">Coffee Flavours</a>
+  <a class="sub-link" href="tobaccoflavours.html">Tobacco Flavours</a>
+  <a class="sub-link" href="cleanlabelflavours.html">Clean Label</a>
+  <a class="sub-link" href="veganflavours.html">Vegan Flavours</a>
+  <a class="sub-link" href="fragrances.html">Fragrances</a>
+  <a href="blog.html">Blog</a>
+  <a href="index.html#contact">Contact</a>
 </aside>
 
-  <main>
-    <!-- Savoury hero section -->
-<section class="petfood-hero">
-  <div class="petfood-hero-frame">
-    <img src="images/savoury-flavours-applications.jpg" alt="Savoury flavour applications in food production" class="petfood-hero-image">
-    <div class="petfood-green-bg">
-      <h1 class="petfood-hero-title">Savoury Flavours for Food Products</h1>
+<div class="nav-wrapper">
+  <div class="nav__container">
+    <div class="nav__logo">
+      <a href="index.html">
+        <img src="images/atmarbio-logo-desktop.svg" alt="Atmar Bio" />
+      </a>
+    </div>
+    <button class="nav__hamburger" onclick="openSidebar()" aria-label="Open menu">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"/></svg>
+    </button>
+    <nav class="nav__desktop">
+      <a href="index.html">Home</a>
+      <a href="index.html#about">About Us</a>
+      <div class="dropdown">
+        <a href="#">Products <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round"/></svg></a>
+        <div class="dropdown-menu">
+          <a href="sweetflavours.html">Sweet Flavours</a>
+          <a href="savouryflavours.html" style="color:var(--green)">Savoury Flavours</a>
+          <a href="alcoholicandliquorflavours.html">Alcoholic &amp; Liquor</a>
+          <a href="petfood.html">Pet Food &amp; Feed</a>
+          <a href="coffeeflavours.html">Coffee Flavours</a>
+          <a href="tobaccoflavours.html">Tobacco Flavours</a>
+          <a href="cleanlabelflavours.html">Clean Label</a>
+          <a href="veganflavours.html">Vegan Flavours</a>
+          <a href="fragrances.html">Fragrances</a>
+        </div>
+      </div>
+      <a href="blog.html">Blog</a>
+      <a href="index.html#contact" class="nav__cta">Contact</a>
+    </nav>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="page-hero__left">
+    <div class="page-hero__tag"><span></span> EU-origin savoury flavours</div>
+    <h1>Savoury flavours for food producers</h1>
+    <p class="page-hero__sub">Meat, cheese, herb, smoke, umami, and vegetable flavour systems. Developed for sauces, soups, ready meals, snacks, meat products, and plant-based meat analogues.</p>
+    <div class="page-hero__cta">
+      <p>Looking for the right savoury flavour? Send us your application, target profile, and declaration preference.</p>
+      <a href="#contact">Start a brief</a>
     </div>
   </div>
+  <div class="page-hero__image">
+    <img src="images/savoury-flavours-applications.jpg" alt="Savoury food production" loading="lazy" />
+  </div>
+</div>
 
- <div class="petfood-hero-cta">
-    <div class="petfood-cta-text">
-      <h2>Looking for the perfect flavour match?</h2>
-      <p>Our team is ready to help you find the best solutions for your recipes.</p>
-    </div>
-    <a href="index.html#contact" class="petfood-cta-button">Write Us</a>
- </div>
-</section>
-
-    <!-- Usage areas section -->
-<!-- Usage areas section -->
-<section class="usage-areas">
-  <h2 class="usage-title">Usage Areas</h2>
-  <p class="usage-subtitle">Select your production category</p>
-
+<!-- USAGE AREAS -->
+<div class="section--slim">
+  <h2 class="section__title">Usage Areas</h2>
+  <p class="section__subtitle">Select your production category</p>
   <div class="usage-grid">
-    <div class="usage-card" data-name="Ready Meals">
-      <img src="icons/ready-meal.svg" alt="Ready Meals">
+    <div class="usage-card" onclick="this.classList.toggle('selected')">
+      <img src="images/icons/ready-meal.svg" alt="Ready Meals" />
       <span>Ready Meals</span>
+      <small>Chilled &amp; frozen meals, pasta, curries</small>
     </div>
-    <div class="usage-card" data-name="Soups & Broths">
-      <img src="icons/soups-broths.svg" alt="Soups and Broths">
-      <span>Soups & Broths</span>
+    <div class="usage-card" onclick="this.classList.toggle('selected')">
+      <img src="images/icons/soups-broths.svg" alt="Soups & Broths" />
+      <span>Soups &amp; Broths</span>
+      <small>Wet &amp; dry soups, stocks, bouillons</small>
     </div>
-    <div class="usage-card" data-name="Meat Products">
-      <img src="icons/meat-products.svg" alt="Meat Products">
+    <div class="usage-card" onclick="this.classList.toggle('selected')">
+      <img src="images/icons/meat-products.svg" alt="Meat Products" />
       <span>Meat Products</span>
+      <small>Sausages, burgers, cured &amp; marinated</small>
     </div>
-    <div class="usage-card" data-name="Cheeses">
-      <img src="icons/cheese.svg" alt="Cheeses">
+    <div class="usage-card" onclick="this.classList.toggle('selected')">
+      <img src="images/icons/cheese.svg" alt="Cheeses" />
       <span>Cheeses</span>
+      <small>Flavoured cheese, processed, analogues</small>
     </div>
-    <div class="usage-card" data-name="Sauces & Gravies">
-      <img src="icons/sauces-gravies.svg" alt="Sauces and Gravies">
-      <span>Sauces & Gravies</span>
+    <div class="usage-card" onclick="this.classList.toggle('selected')">
+      <img src="images/icons/sauces-gravies.svg" alt="Sauces & Gravies" />
+      <span>Sauces &amp; Gravies</span>
+      <small>Cooking sauces, condiments, dressings</small>
     </div>
-    <div class="usage-card" data-name="Fillings & Spreads">
-      <img src="icons/fillings-spreads.svg" alt="Fillings and Spreads">
-      <span>Fillings & Spreads</span>
+    <div class="usage-card" onclick="this.classList.toggle('selected')">
+      <img src="images/icons/fillings-spreads.svg" alt="Fillings & Spreads" />
+      <span>Fillings &amp; Spreads</span>
+      <small>Savoury pastry fillings, pâtés, pastes</small>
     </div>
   </div>
-</section>
+</div>
 
-
-<section class="certifications">
-  <div class="certifications-container">
-    <img src="images/fssc22000.png" alt="FSSC22000 certification" class="cert-logo">
-
-    <p class="cert-text">
-      <img src="icons/icon-check.svg" alt="check icon" class="cert-check">
-      We supply food flavours in accordance with 1334/2008/EU regulation.
-    </p>
-
-    <div class="badge">
-        <img src="images/non-gmo.png" alt="Non GMO" />
+<!-- CERT STRIP -->
+<div class="section--slim" style="padding-top:0">
+  <div class="cert-strip">
+    <div class="cert-strip__fssc">
+      <div class="cert-strip__fssc-ring">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9"/></svg>
+      </div>
+      <span class="cert-strip__fssc-label">FSSC 22000</span>
+    </div>
+    <div class="cert-strip__text">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="margin-top:2px;flex-shrink:0"><path d="M9 12l2 2 4-4" stroke-linecap="round"/><circle cx="12" cy="12" r="9"/></svg>
+      We supply food flavours in accordance with EU Regulation 1334/2008.
+    </div>
+    <div class="cert-strip__badges">
+      <div class="cert-strip__badge">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="46" stroke="#2d6a00" stroke-width="3" fill="white"/>
+          <circle cx="50" cy="50" r="36" fill="#2d6a00"/>
+          <text x="50" y="41" text-anchor="middle" fill="white" font-family="Arial" font-weight="bold" font-size="13">NON</text>
+          <text x="50" y="56" text-anchor="middle" fill="white" font-family="Arial" font-weight="bold" font-size="15">GMO</text>
+          <text x="50" y="69" text-anchor="middle" fill="white" font-family="Arial" font-size="9">PROJECT</text>
+        </svg>
         <p>All products are non GMO</p>
-    </div>
-    <div class="badge">
-        <img src="images/halal.png" alt="Halal Certified" />
-        <p>Possible for some of products</p>
-    </div>
-    <div class="badge">
-        <img src="images/kosher.png" alt="Kosher Certified" />
-        <p>Possible for some of products</p>
+      </div>
+      <div class="cert-strip__badge">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="46" stroke="#1a5c2a" stroke-width="3" fill="white"/>
+          <circle cx="50" cy="50" r="36" fill="white" stroke="#1a5c2a" stroke-width="2"/>
+          <text x="50" y="38" text-anchor="middle" fill="#1a5c2a" font-family="Arial" font-size="9" letter-spacing="2">HALAL</text>
+          <text x="50" y="57" text-anchor="middle" fill="#1a5c2a" font-family="serif" font-size="22">حلال</text>
+          <text x="50" y="72" text-anchor="middle" fill="#1a5c2a" font-family="Arial" font-size="8">CERTIFIED</text>
+        </svg>
+        <p>Possible for some products</p>
+      </div>
+      <div class="cert-strip__badge">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="46" stroke="#333" stroke-width="3" fill="white"/>
+          <circle cx="50" cy="50" r="36" fill="white" stroke="#333" stroke-width="2"/>
+          <text x="50" y="44" text-anchor="middle" fill="#333" font-family="Arial" font-weight="bold" font-size="30">K</text>
+          <text x="50" y="63" text-anchor="middle" fill="#333" font-family="Arial" font-size="10">KOSHER</text>
+        </svg>
+        <p>Possible for some products</p>
+      </div>
     </div>
   </div>
-</section>
+</div>
 
+<!-- FLAVOUR PROFILES -->
+<div class="section--slim">
+  <h2 class="section__title">Some of Our Popular Savoury Flavours</h2>
+  <p class="section__subtitle">Select your flavour interest</p>
 
-    <!-- Flavour selection list -->
-
-<section class="flavour-selection">
-  <h2>Some of Our Popular Savoury Flavours:</h2>
-  <p class="flavour-instruction">Select your flavour interest</p>
-
-  <div class="flavour-list">
-    <div class="flavour-item">Angelica</div>
-    <div class="flavour-item">Artichoke</div>
-    <div class="flavour-item">Arrabbiata</div>
-    <div class="flavour-item">Asparagus</div>
-    <div class="flavour-item">Atjar</div>
-    <div class="flavour-item">Bacon</div>
-    <div class="flavour-item">Black Pepper</div>
-    <div class="flavour-item">Bolognese</div>
-    <div class="flavour-item">Bordeaux</div>
-    <div class="flavour-item">Bouguignon herbs</div>
-    <div class="flavour-item">Cardamom</div>
-    <div class="flavour-item">Carbonara</div>
-    <div class="flavour-item">Celery, for Vinegar</div>
-    <div class="flavour-item">Cheese, type Blue</div>
-    <div class="flavour-item">Cheese, type Cheddar</div>
-    <div class="flavour-item">Cheese, type Dutch Gouda</div>
-    <div class="flavour-item">Cheese, type Dutch matured</div>
-    <div class="flavour-item">Cheese, type Emmenthal</div>
-    <div class="flavour-item">Cheese, type Mozzarella</div>
-    <div class="flavour-item">Cheese, type Parmesan</div>
-    <div class="flavour-item">Cheese, type Pecorino</div>
-    <div class="flavour-item">Cheese, type Roquefort</div>
-    <div class="flavour-item">Cheese, type young Gouda</div>
-    <div class="flavour-item">Chicken</div>
-    <div class="flavour-item">Chicken, type roasted</div>
-    <div class="flavour-item">Chorizo</div>
-    <div class="flavour-item">Cinnamon</div>
-    <div class="flavour-item">Clove</div>
-    <div class="flavour-item">Coriander</div>
-    <div class="flavour-item">Cumin</div>
-    <div class="flavour-item">Curry, type Madras</div>
-    <div class="flavour-item">Dill</div>
-    <div class="flavour-item">Dill, for Gherks</div>
-    <div class="flavour-item">Estragon</div>
-    <div class="flavour-item">Fennel</div>
-    <div class="flavour-item">Fine garden herbs</div>
-    <div class="flavour-item">French Mustard</div>
-    <div class="flavour-item">Fresh onion</div>
-    <div class="flavour-item">Fruit for Vinegar</div>
-    <div class="flavour-item">Garlic</div>
-    <div class="flavour-item">Ginger</div>
-    <div class="flavour-item">Ginger Ale</div>
-    <div class="flavour-item">Gouda</div>
-    <div class="flavour-item">Gorgonzola</div>
-    <div class="flavour-item">Ham</div>
-    <div class="flavour-item">Herbs, type Provencal</div>
-    <div class="flavour-item">Herbs for Tomato Ketchup</div>
-    <div class="flavour-item">Herbs, type Koningsberger</div>
-    <div class="flavour-item">Herring Spices</div>
-    <div class="flavour-item">Horseradish extract</div>
-    <div class="flavour-item">Italian Brasato</div>
-    <div class="flavour-item">Laurel-leaf</div>
-    <div class="flavour-item">Liver</div>
-    <div class="flavour-item">Mace</div>
-    <div class="flavour-item">Malaga</div>
-    <div class="flavour-item">Malt Vinegar</div>
-    <div class="flavour-item">Marrow</div>
-    <div class="flavour-item">Matriciana</div>
-    <div class="flavour-item">Mayonnaise</div>
-    <div class="flavour-item">Meat, type Beef</div>
-    <div class="flavour-item">Meat, type Boiled</div>
-    <div class="flavour-item">Meat, type Roasted</div>
-    <div class="flavour-item">Mediterranean mix</div>
-    <div class="flavour-item">Mexican Taco</div>
-    <div class="flavour-item">Milk Caramel</div>
-    <div class="flavour-item">Mixed Spices (different types)</div>
-    <div class="flavour-item">Mozzarella</div>
-    <div class="flavour-item">Mushroom (different types)</div>
-    <div class="flavour-item">Mustard</div>
-    <div class="flavour-item">Mustard for Vinegar</div>
-    <div class="flavour-item">Natural spices</div>
-    <div class="flavour-item">Natural umami taste</div>
-    <div class="flavour-item">Nutmeg</div>
-    <div class="flavour-item">Onion</div>
-    <div class="flavour-item">Orange, bitter</div>
-    <div class="flavour-item">Parmesan</div>
-    <div class="flavour-item">Pesto alla Genovese</div>
-    <div class="flavour-item">Pesto, basil</div>
-    <div class="flavour-item">Pepper</div>
-    <div class="flavour-item">Peppermint</div>
-    <div class="flavour-item">Pimentberry</div>
-    <div class="flavour-item">Pizza</div>
-    <div class="flavour-item">Radicchio</div>
-    <div class="flavour-item">Red Cabbage</div>
-    <div class="flavour-item">Ricotta & Spinach</div>
-    <div class="flavour-item">Roasted onion</div>
-    <div class="flavour-item">Rosemary</div>
-    <div class="flavour-item">Rucola</div>
-    <div class="flavour-item">Salvia</div>
-    <div class="flavour-item">Sambal</div>
-    <div class="flavour-item">Sea bass</div>
-    <div class="flavour-item">Shellfish extract</div>
-    <div class="flavour-item">Smoked Salmon</div>
-    <div class="flavour-item">Smoke concentrate (different types; Hickory)</div>
-    <div class="flavour-item">Spices for mussels</div>
-    <div class="flavour-item">Sweet-sour (different types)</div>
-    <div class="flavour-item">Thai green curry</div>
-    <div class="flavour-item">Thüringer sausage</div>
-    <div class="flavour-item">Thyme</div>
-    <div class="flavour-item">Tomato</div>
-    <div class="flavour-item">Truffle</div>
-    <div class="flavour-item">Wine-bouquet</div>
-    <div class="flavour-item">Wine–Vinegar</div>
+  <div class="flavour-section">
+    <div class="flavour-section__title" onclick="toggleGroup(this)">
+      Meat &amp; Poultry
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="flavour-items open">
+      <div class="flavour-item" onclick="selectFlavour(this)">Beef Roasted</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Beef Boiled</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Beef Bolognese</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Beef Carbonara</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Beef Bourguignon</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Chicken Roasted</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Chicken Boiled</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Chicken Broth</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Ham</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Bacon</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Chorizo</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Pork</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Liver</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Marrow</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Smoked Salmon</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Salmon</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Shrimp</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Shellfish Extract</div>
+    </div>
   </div>
 
-  <button class="send-button" disabled>Send Us</button>
-</section>
+  <div class="flavour-section">
+    <div class="flavour-section__title" onclick="toggleGroup(this)">
+      Cheese
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="flavour-items">
+      <div class="flavour-item" onclick="selectFlavour(this)">Blue Cheese</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Cheddar</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Dutch Gouda Young</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Dutch Gouda Aged</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Dutch Matured</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Emmenthal</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Mozzarella</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Parmesan</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Pecorino</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Roquefort</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Gorgonzola</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Ricotta</div>
+    </div>
+  </div>
 
+  <div class="flavour-section">
+    <div class="flavour-section__title" onclick="toggleGroup(this)">
+      Herbs &amp; Spices
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="flavour-items">
+      <div class="flavour-item" onclick="selectFlavour(this)">Black Pepper</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Cardamom</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Cinnamon</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Clove</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Coriander</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Cumin</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Dill</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Estragon (Tarragon)</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Fennel</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Ginger</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Laurel (Bay)</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Mace</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Nutmeg</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Rosemary</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Sage</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Thyme</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Fine Garden Herbs</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Provençal Herbs</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Mediterranean Mix</div>
+    </div>
+  </div>
 
-    <!-- CTA form -->
+  <div class="flavour-section">
+    <div class="flavour-section__title" onclick="toggleGroup(this)">
+      Regional Cuisine
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="flavour-items">
+      <div class="flavour-item" onclick="selectFlavour(this)">Italian Brasato</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Arrabbiata</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Bolognese</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Carbonara</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Matriciana</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Pesto Genovese</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Pesto Basil</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Pizza</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">French Mustard</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Bourguignon</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Mexican Taco</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Thai Green Curry</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Indian Madras Curry</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Sambal</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Chorizo</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Rucola</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Radicchio</div>
+    </div>
+  </div>
 
-<div class="popup-overlay hidden">
-  <div class="popup">
-    <div class="popup-content">
-      <p class="popup-title">Let’s connect and work together!</p>
+  <div class="flavour-section">
+    <div class="flavour-section__title" onclick="toggleGroup(this)">
+      Umami &amp; Maillard
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="flavour-items">
+      <div class="flavour-item" onclick="selectFlavour(this)">Natural Umami</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Mushroom Forest</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Mushroom Truffle</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Shellfish Extract</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Horseradish Extract</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Yeast Extract (on request)</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Miso (on request)</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Soy (on request)</div>
+    </div>
+  </div>
 
-      <div class="popup-section">
-        <h4>Your Selected Category:</h4>
-        <div id="selectedCategory" class="popup-selected"></div>
+  <div class="flavour-section">
+    <div class="flavour-section__title" onclick="toggleGroup(this)">
+      Smoke
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="flavour-items">
+      <div class="flavour-item" onclick="selectFlavour(this)">Hickory Smoke</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Applewood Smoke</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Beechwood Smoke</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Mesquite Smoke</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Natural Smoke</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Liquid Smoke</div>
+    </div>
+  </div>
+
+  <div class="flavour-section">
+    <div class="flavour-section__title" onclick="toggleGroup(this)">
+      Vegetables &amp; Alliums
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="flavour-items">
+      <div class="flavour-item" onclick="selectFlavour(this)">Tomato</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Onion Fresh</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Onion Roasted</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Garlic Fresh</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Garlic Roasted</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Asparagus</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Artichoke</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Celery</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Mushroom</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Red Cabbage</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Sweet Corn</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Ricotta &amp; Spinach</div>
+    </div>
+  </div>
+
+  <div class="flavour-section">
+    <div class="flavour-section__title" onclick="toggleGroup(this)">
+      Sauces &amp; Condiment Bases
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="flavour-items">
+      <div class="flavour-item" onclick="selectFlavour(this)">Mayonnaise</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">French Mustard</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Ketchup Herbs</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Malt Vinegar</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Wine Vinegar</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Herbal Vinegar</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Sweet-Sour</div>
+    </div>
+  </div>
+
+  <div class="flavour-section">
+    <div class="flavour-section__title" onclick="toggleGroup(this)">
+      Plant-Based Meat Systems
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="flavour-items">
+      <div class="flavour-item" onclick="selectFlavour(this)">Beef Analogue</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Chicken Analogue</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Pork Analogue</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Sausage Analogue</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Seafood Analogue</div>
+      <div class="flavour-item" onclick="selectFlavour(this)">Bacon Analogue</div>
+    </div>
+  </div>
+
+  <button class="send-btn" id="sendBtn" onclick="openPopup()">Select flavours above to request a brief</button>
+</div>
+
+<!-- FAQ -->
+<div class="section--slim" style="padding-top:0">
+  <h2 class="section__title">Frequently Asked Questions</h2>
+  <div class="faq__list">
+    <div class="faq__item open">
+      <button class="faq__question" onclick="toggleFaq(this)">
+        <span>Do you supply natural umami without MSG?</span>
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="faq__answer"><p>Yes. We supply yeast-derived, fermented vegetable, and mushroom-extract-based umami systems that deliver depth without monosodium glutamate.</p></div>
+    </div>
+    <div class="faq__item">
+      <button class="faq__question" onclick="toggleFaq(this)">
+        <span>Can you develop a flavour system for plant-based meat?</span>
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="faq__answer"><p>Yes. We develop masking plus characterising flavours for pea, soy, faba, and wheat protein systems, tuned to your target meat profile and process conditions.</p></div>
+    </div>
+    <div class="faq__item">
+      <button class="faq__question" onclick="toggleFaq(this)">
+        <span>Are your smoke flavours EFSA compliant?</span>
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="faq__answer"><p>We supply alternative natural smoke-profile systems that sit outside the primary smoke flavourings category reassessed by EFSA in 2023. Ask us for the current compliant options for your market.</p></div>
+    </div>
+    <div class="faq__item">
+      <button class="faq__question" onclick="toggleFaq(this)">
+        <span>Can you match a specific competitor sauce or seasoning profile?</span>
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="faq__answer"><p>Yes. Send us the reference product or flavour name and we will sample a match. We do not need their source.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="section--slim" id="contact" style="padding-top:0">
+  <div class="contact-section">
+    <div class="contact-grid">
+      <div>
+        <h2>Contact us</h2>
+        <p class="sub">Tell us what you are working on. We reply within one business day.</p>
+        <div class="contact-info-item">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round"/></svg>
+          Varna, Bulgaria
+        </div>
+        <div class="contact-info-item">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round"/></svg>
+          info@atmarbio.com
+        </div>
+        <div class="contact-socials">
+          <a href="https://www.linkedin.com/in/atmar-bio-ltd-0812aa182/" target="_blank" aria-label="LinkedIn">
+            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="https://www.instagram.com/atmarbio/" target="_blank" aria-label="Instagram">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><path d="M17.5 6.5h.01"/></svg>
+          </a>
+          <a href="https://www.facebook.com/foodflavorsandcolorants/" target="_blank" aria-label="Facebook">
+            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+        </div>
       </div>
-
-      <div class="popup-section">
-        <h4>Your Flavour Interest:</h4>
-        <div id="selectedFlavours" class="popup-flavours"></div>
-      </div>
-
-      <form id="popupForm">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" placeholder="Name and surname">
-
-        <label for="email">Email <span style="color:red">*</span></label>
-        <input type="email" id="email" name="email" placeholder="Your email address" required>
-
-        <label for="message">Message</label>
-        <textarea id="message" name="message" placeholder="Just type your words here..."></textarea>
-
-        <button type="submit" class="button purple fullwidth">Send Message</button>
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <label>Name<input type="text" placeholder="Your name" required /></label>
+        <label>Company<input type="text" placeholder="Company name" /></label>
+        <label>Email<input type="email" placeholder="your@email.com" required /></label>
+        <label>Category
+          <select>
+            <option selected>Savoury Flavours</option>
+            <option>Sweet Flavours</option>
+            <option>Alcoholic &amp; Liquor</option>
+            <option>Pet Food &amp; Feed</option>
+            <option>Coffee Flavours</option>
+            <option>Clean Label</option>
+            <option>Vegan Flavours</option>
+            <option>Other</option>
+          </select>
+        </label>
+        <label>Message<textarea placeholder="Describe your application, target profile, and regulatory market..."></textarea></label>
+        <button type="submit">Send message</button>
       </form>
     </div>
   </div>
 </div>
 
-  </main>
-
-  <!-- Footer -->
+<!-- FOOTER -->
 <footer class="footer">
   <div class="footer__top">
     <div class="footer__brand">
@@ -365,7 +626,7 @@
         <ul>
           <li><a href="sweetflavours.html">Sweet Flavours</a></li>
           <li><a href="savouryflavours.html">Savoury Flavours</a></li>
-          <li><a href="alcoholicandliquorflavours.html">Alcoholic & Liquor Flavours</a></li>
+          <li><a href="alcoholicandliquorflavours.html">Alcoholic &amp; Liquor Flavours</a></li>
           <li><a href="petfood.html">Pet Food Flavours</a></li>
           <li><a href="tobaccoflavours.html">Tobacco Flavours</a></li>
           <li><a href="fragrances.html">Fragrances</a></li>
@@ -373,8 +634,8 @@
       </div>
       <div>
         <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About Us</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#about">About Us</a></li>
           <li><a href="index.html#contact">Contact Us</a></li>
           <li><a href="blog.html">Blog</a></li>
           <li><a href="#">Paulownia</a></li>
@@ -384,12 +645,74 @@
     </div>
   </div>
   <div class="footer__bottom">
-    <p>© 2025 Atmar Bio | Food Ingredients & Flavours</p>
+    <p>© 2025 Atmar Bio | Food Ingredients &amp; Flavours</p>
     <a href="#">Privacy Policy</a>
   </div>
 </footer>
 
-<script src="script.js"></script>
+<!-- POPUP -->
+<div class="popup-overlay" id="popupOverlay">
+  <div class="popup">
+    <h3>Request a brief</h3>
+    <p style="font-size:13px;color:#6B7280;margin-top:4px">Selected flavours:</p>
+    <div class="popup__selected" id="popupTags"></div>
+    <div class="popup__form">
+      <label>Name<input type="text" placeholder="Your name" /></label>
+      <label>Email<input type="email" placeholder="your@email.com" /></label>
+      <label>Application &amp; notes<textarea placeholder="Tell us what you are making..."></textarea></label>
+    </div>
+    <div class="popup__btns">
+      <button class="popup__send" onclick="submitPopup()">Send brief</button>
+      <button class="popup__cancel" onclick="closePopup()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function openSidebar() { document.getElementById('sidebar').classList.add('open'); document.getElementById('overlay').classList.add('open'); }
+  function closeSidebar() { document.getElementById('sidebar').classList.remove('open'); document.getElementById('overlay').classList.remove('open'); }
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq__item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq__item').forEach(el => el.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+  function toggleGroup(el) {
+    const items = el.nextElementSibling;
+    el.classList.toggle('open');
+    items.classList.toggle('open');
+  }
+  let selected = [];
+  function selectFlavour(el) {
+    el.classList.toggle('selected');
+    const name = el.textContent.trim();
+    if (el.classList.contains('selected')) { selected.push(name); } else { selected = selected.filter(s => s !== name); }
+    const btn = document.getElementById('sendBtn');
+    if (selected.length > 0) {
+      btn.classList.add('active');
+      btn.textContent = 'Request a brief for ' + selected.length + ' flavour' + (selected.length > 1 ? 's' : '');
+    } else {
+      btn.classList.remove('active');
+      btn.textContent = 'Select flavours above to request a brief';
+    }
+  }
+  function openPopup() {
+    if (!selected.length) return;
+    const tags = document.getElementById('popupTags');
+    tags.innerHTML = selected.map(s => '<span class="popup__tag">' + s + '</span>').join('');
+    document.getElementById('popupOverlay').classList.add('open');
+  }
+  function closePopup() { document.getElementById('popupOverlay').classList.remove('open'); }
+  function submitPopup() {
+    const btn = document.querySelector('.popup__send');
+    btn.textContent = 'Sent!'; btn.style.background = '#99AF61'; btn.disabled = true;
+    setTimeout(closePopup, 1500);
+  }
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button');
+    btn.textContent = 'Sent! We will be in touch.'; btn.style.background = '#99AF61'; btn.disabled = true;
+  }
+</script>
 </body>
 </html>
-
