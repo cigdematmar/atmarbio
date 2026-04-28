@@ -178,62 +178,98 @@
 </head>
 <body>
 
-<div class="sidebar-overlay" id="overlay" onclick="closeSidebar()"></div>
-<aside class="sidebar" id="sidebar">
-  <div class="sidebar__header">
-    <img src="images/atmarbio-logo-desktop.svg" alt="Atmar Bio" />
-    <button onclick="closeSidebar()" style="background:none;border:none;cursor:pointer;padding:4px">
-      <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12" stroke-linecap="round"/></svg>
-    </button>
-  </div>
-  <a href="index.html">Home</a>
-  <a href="index.html#about">About Us</a>
-  <div class="sidebar__section-title">Products</div>
-  <a class="sub-link" href="sweetflavours.html">Sweet Flavours</a>
-  <a class="sub-link" href="savouryflavours.html">Savoury Flavours</a>
-  <a class="sub-link" href="alcoholicandliquorflavours.html">Alcoholic &amp; Liquor</a>
-  <a class="sub-link" href="petfood.html">Pet Food &amp; Feed</a>
-  <a class="sub-link" href="coffeeflavours.html">Coffee Flavours</a>
-  <a class="sub-link" href="tobaccoflavours.html">Tobacco Flavours</a>
-  <a class="sub-link" href="cleanlabelflavours.html">Clean Label</a>
-  <a class="sub-link" href="veganflavours.html" style="color:var(--green)">Vegan Flavours</a>
-  <a class="sub-link" href="fragrances.html">Fragrances</a>
-  <a href="blog.html">Blog</a>
-  <a href="index.html#contact">Contact</a>
-</aside>
+<header>
+  <div class="nav-wrapper">
+    <nav class="nav" role="navigation" aria-label="Main Navigation">
+      <div class="nav__container">
+        <div class="nav__logo">
+          <a href="index.html">
+            <img src="images/atmarbio-logo-desktop.svg" alt="Atmar Bio logo - food ingredients supplier" class="logo" loading="lazy">
+          </a>
+        </div>
 
-<div class="nav-wrapper">
-  <div class="nav__container">
-    <div class="nav__logo">
-      <a href="index.html">
-        <img src="images/atmarbio-logo-desktop.svg" alt="Atmar Bio" />
-      </a>
-    </div>
-    <button class="nav__hamburger" onclick="openSidebar()" aria-label="Open menu">
-      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"/></svg>
-    </button>
-    <nav class="nav__desktop">
-      <a href="index.html">Home</a>
-      <a href="index.html#about">About Us</a>
-      <div class="dropdown" id="productsDropdown">
-        <a href="#" onclick="toggleDropdown(event)">Products <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round"/></svg></a>
-        <div class="dropdown-menu">
-          <a href="sweetflavours.html">Sweet Flavours</a>
-          <a href="savouryflavours.html">Savoury Flavours</a>
-          <a href="alcoholicandliquorflavours.html">Alcoholic &amp; Liquor</a>
-          <a href="petfood.html">Pet Food &amp; Feed</a>
-          <a href="coffeeflavours.html">Coffee Flavours</a>
-          <a href="tobaccoflavours.html">Tobacco Flavours</a>
-          <a href="cleanlabelflavours.html">Clean Label</a>
-          <a href="veganflavours.html" style="color:var(--green)">Vegan Flavours</a>
-          <a href="fragrances.html">Fragrances</a>
+        <div class="nav__menu-items">
+          <div class="dropdown">
+            <a href="#" class="active">Products
+              <img src="icons/dropdown-arrow.svg" alt="dropdown arrow" class="dropdown-arrow">
+            </a>
+            <div class="dropdown-content">
+              <a href="sweetflavours.html">Sweet Flavours</a>
+              <a href="savouryflavours.html">Savoury Flavours</a>
+              <a href="alcoholicandliquorflavours.html">Alcoholic &amp; Liquor Flavours</a>
+              <a href="petfood.html">Pet Food Flavours</a>
+              <a href="coffeeflavours.html">Coffee Flavours</a>
+              <a href="tobaccoflavours.html">Tobacco Flavours</a>
+              <a href="cleanlabelflavours.html">Clean Label Flavours</a>
+              <a href="veganflavours.html">Vegan Flavours</a>
+              <a href="fragrances.html">Fragrances</a>
+            </div>
+          </div>
+          <a href="blog.html">Blog</a>
+          <a href="index.html#contact">Contact</a>
+        </div>
+
+        <div class="nav__menu-icon" role="button" aria-label="Open menu">
+          <img src="icons/menu-icon.svg" alt="Menu icon">
         </div>
       </div>
-      <a href="blog.html">Blog</a>
-      <a href="index.html#contact" class="nav__cta">Contact</a>
     </nav>
   </div>
-</div>
+</header>
+
+<!-- Sidebar Overlay -->
+<div class="sidebar-overlay"></div>
+
+<!-- Sidebar -->
+<aside class="sidebar">
+  <div class="sidebar__header">
+    <img src="images/atmarbio-logo-desktop.svg" alt="Atmar Bio logo" class="sidebar__logo" />
+    <img src="icons/close-icon.svg" alt="Close menu" class="sidebar__close" role="button" aria-label="Close menu" />
+  </div>
+
+  <nav class="sidebar__content">
+    <div class="sidebar__section">
+      <a href="index.html" class="sidebar__item">
+        <img src="icons/icon-home.svg" alt="Home icon" class="sidebar__icon" />
+        <span>Home</span>
+      </a>
+
+      <div class="sidebar__item sidebar__products-header">
+        <img src="icons/icon-products.svg" alt="Products icon" class="sidebar__icon" />
+        <span>Products</span>
+      </div>
+
+      <ul class="sidebar__products">
+        <li><a href="sweetflavours.html">Sweet Flavours</a></li>
+        <li><a href="savouryflavours.html">Savoury Flavours</a></li>
+        <li><a href="alcoholicandliquorflavours.html">Alcoholic &amp; Liquor Flavours</a></li>
+        <li><a href="petfood.html">Pet Food Flavours</a></li>
+        <li><a href="coffeeflavours.html">Coffee Flavours</a></li>
+        <li><a href="tobaccoflavours.html">Tobacco Flavours</a></li>
+        <li><a href="cleanlabelflavours.html">Clean Label Flavours</a></li>
+        <li><a href="veganflavours.html">Vegan Flavours</a></li>
+        <li><a href="fragrances.html">Fragrances</a></li>
+        <li><a href="#">Salep</a></li>
+        <li><a href="#">Paulownia</a></li>
+      </ul>
+
+      <a href="index.html#about" class="sidebar__item">
+        <img src="icons/icon-about-us.svg" alt="About us icon" class="sidebar__icon" />
+        <span>About Us</span>
+      </a>
+
+      <a href="blog.html" class="sidebar__item">
+        <img src="icons/icon-blog.svg" alt="Blog icon" class="sidebar__icon" />
+        <span>Blog</span>
+      </a>
+
+      <a href="index.html#contact" class="sidebar__item">
+        <img src="icons/icon-contact.svg" alt="Contact icon" class="sidebar__icon" />
+        <span>Contact</span>
+      </a>
+    </div>
+  </nav>
+</aside>
 
 <!-- HERO -->
 <div class="page-hero">
@@ -633,18 +669,16 @@
 </div>
 
 <script>
-  function openSidebar() { document.getElementById('sidebar').classList.add('open'); document.getElementById('overlay').classList.add('open'); }
-  function closeSidebar() { document.getElementById('sidebar').classList.remove('open'); document.getElementById('overlay').classList.remove('open'); }
-  function toggleDropdown(e) {
-    e.preventDefault();
-    const dropdown = document.getElementById('productsDropdown');
-    dropdown.classList.toggle('open');
+  // Sidebar
+  const _menuIcon = document.querySelector('.nav__menu-icon');
+  const _sidebar = document.querySelector('.sidebar');
+  const _sidebarOverlay = document.querySelector('.sidebar-overlay');
+  const _closeIcon = document.querySelector('.sidebar__close');
+  if (_menuIcon && _sidebar && _sidebarOverlay && _closeIcon) {
+    _menuIcon.addEventListener('click', () => { _sidebar.classList.add('open'); _sidebarOverlay.classList.add('open'); });
+    _closeIcon.addEventListener('click', () => { _sidebar.classList.remove('open'); _sidebarOverlay.classList.remove('open'); });
+    _sidebarOverlay.addEventListener('click', () => { _sidebar.classList.remove('open'); _sidebarOverlay.classList.remove('open'); });
   }
-  document.addEventListener('click', function(e) {
-    if (!e.target.closest('#productsDropdown')) {
-      document.getElementById('productsDropdown').classList.remove('open');
-    }
-  });
   function toggleFaq(btn) {
     const item = btn.closest('.faq__item');
     const isOpen = item.classList.contains('open');
