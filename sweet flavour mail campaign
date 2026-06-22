@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ATMAR BIO Sweet Food Flavours Email</title>
+  <base href="https://www.atmarbio.com/">
+
+  <!-- Global Responsive Styling -->
+<style>
+  @media only screen and (max-width: 600px) {
+    .stack-column {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+    .center-on-mobile {
+      text-align: center !important;
+    }
+    .hero-text {
+      font-size: 28px !important;
+      line-height: 36px !important;
+      text-align: center !important;
+    }
+    .advantages-row {
+      display: block !important;
+      width: 100% !important;
+      padding-bottom: 10px;
+    }
+    .img-center {
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+    .category-table td {
+      width: 33.33% !important;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- SECTION WRAPPER -->
+<div style="max-width: 1024px; margin: 0 auto; padding: 0 16px; box-sizing: border-box;">
+
+  <!-- HERO SECTION -->
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+    <tr>
+      <td>
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="width: 100%;">
+          <tr>
+            <!-- Text Column -->
+            <td class="stack-column" style="padding: 20px; vertical-align: top;">
+              <a href="/" target="_blank">
+                <img src="https://atmar.bg/email_campaigns/250714_petfoods/atmarbio-logo-desktop.svg" alt="ATMAR BIO Logo" width="150" style="margin-bottom: 20px; margin-top: 20px;">
+              </a>
+              <div class="hero-text" style="font-family: 'Libre Baskerville', serif; font-size: 40px; font-weight: 700; color: #1F2937; letter-spacing: 1.2px; padding-top: 10px; padding-bottom: 24px;">
+                Flavours for<br>Sweet Foods
+              </div>
+              <table class="advantage-table" role="presentation" cellpadding="4" cellspacing="8" border="0" style="padding-top: 10px;">
+                <tr>
+                  <td class="advantages-row">
+                    <img src="https://atmar.bg/email_campaigns/250714_petfoods/icon-check.svg" class="icon" alt="" style="width: 14px; height: 14px; margin-right: 5px; padding-top: 4px;">
+                    <span style="font-family: Inter, sans-serif; font-size: 14px; color: #6B7280;">EU-origin</span>
+                  </td>
+                  <td class="advantages-row">
+                    <img src="https://atmar.bg/email_campaigns/250714_petfoods/icon-check.svg" class="icon" alt="" style="width: 14px; height: 14px; margin-right: 5px; padding-top: 4px;">
+                    <span style="font-family: Inter, sans-serif; font-size: 14px; color: #6B7280;">Honest pricing</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="advantages-row">
+                    <img src="https://atmar.bg/email_campaigns/250714_petfoods/icon-check.svg" class="icon" alt="" style="width: 14px; height: 14px; margin-right: 5px; padding-top: 4px;">
+                    <span style="font-family: Inter, sans-serif; font-size: 14px; color: #6B7280;">Fast answers</span>
+                  </td>
+                  <td class="advantages-row">
+                    <img src="https://atmar.bg/email_campaigns/250714_petfoods/icon-check.svg" class="icon" alt="" style="width: 14px; height: 14px; margin-right: 5px; padding-top: 4px;">
+                    <span style="font-family: Inter, sans-serif; font-size: 14px; color: #6B7280;">Ethic work</span>
+                  </td>
+                </tr>
+              </table>
+            </td>
+
+            <!-- Image Column -->
+            <td class="stack-column center-on-mobile" style="padding: 20px;">
+              <a href="https://www.atmarbio.com/petfood" target="_blank">
+                <img src="https://atmar.bg/email_campaigns/250714_petfoods/lovely-birthday-concept-with-happy-family.jpg" alt="girls eating cake" width="250" class="img-center" style="border-radius: 8px;">
+              </a>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+
+  <!-- CATEGORIES SECTION -->
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top: 32px;">
+    <tr>
+      <td>
+        <table role="presentation" width="100%" cellpadding="10" cellspacing="0" style="border:1px solid #E5E7EB; border-radius:8px;" class="category-table">
+          <tr>
+            <td align="center" style="padding: 10px;">
+              <img src="https://atmar.bg/email_campaigns/250714_petfoods/dairy-product.svg" alt="Dairy Product" width="30">
+              <div style="font-family: Inter, sans-serif; font-size:14px; color:#1F2937; padding-top:5px;">Dairy Product</div>
+            </td>
+            <td align="center" style="padding: 10px;">
+              <img src="https://atmar.bg/email_campaigns/250714_petfoods/bakery-pastry.svg" alt="Bakery & Pastry" width="30">
+              <div style="font-family: Inter, sans-serif; font-size:14px; color:#1F2937; padding-top:5px;">Bakery & Pastry</div>
+            </td>
+            <td align="center" style="padding: 10px;">
+              <img src="https://atmar.bg/email_campaigns/250714_petfoods/confectionery.svg" alt="Confectionery" width="30">
+              <div style="font-family: Inter, sans-serif; font-size:14px; color:#1F2937; padding-top:5px;">Confectionery</div>
+            </td>
+            <td align="center" style="padding: 10px;">
+              <img src="https://atmar.bg/email_campaigns/250714_petfoods/drinks.svg" alt="Drinks" width="30">
+              <div style="font-family: Inter, sans-serif; font-size:14px; color:#1F2937; padding-top:5px;">Drinks</div>
+            </td>
+            <td align="center" style="padding: 10px;">
+              <img src="https://atmar.bg/email_campaigns/250714_petfoods/dessert-topping.svg" alt="Desserts & Toppings" width="30">
+              <div style="font-family: Inter, sans-serif; font-size:14px; color:#1F2937; padding-top:5px;">Desserts & Toppings</div>
+            </td>
+            <td align="center" style="padding: 10px;">
+              <img src="https://atmar.bg/email_campaigns/250714_petfoods/nutritional.svg" alt="Nutrition & Functional" width="30">
+              <div style="font-family: Inter, sans-serif; font-size:14px; color:#1F2937; padding-top:5px;">Nutrition & Functional</div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+
+  <!-- PEOPLE EATING SWWETS IMAGE -->
+  <div style="margin: 40px 0;">
+    <img src="https://atmar.bg/email_campaigns/250714_petfoods/yummy-birthday-cake.jpg" alt="Eating sweets" style="width: 100%; max-width: 100%; border-radius: 8px; display: block;">
+  </div>
+
+</div>
+
+
+    <!-- Global Responsive Styling -->
+    <style>
+    @media only screen and (max-width: 899px) {
+        .flavour-columns {
+        flex-direction: column !important;
+        }
+        .flavour-column {
+        width: 100% !important;
+        }
+    }
+    </style>
+<!-- ALT BÖLÜMLERİN KONTEYNERİ -->
+<div style="max-width: 1024px; margin: 0 auto; padding: 0 16px; box-sizing: border-box;">
+
+  <!-- FLAVOUR LIST -->
+  <div style="margin-top: 48px; background: white; border-radius: 8px; border: 1px solid #E5E7EB; padding: 24px; display: flex; flex-direction: column; gap: 32px;">
+    <div style="color: #99AF61; font-size: 18px; font-family: 'Libre Baskerville', serif; font-weight: 700;">
+      Some of Our Popular Flavours
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between;">
+      <!-- Column 1 -->
+      <div style="flex: 1 1 260px; font-size: 14px; font-family: Inter, sans-serif; line-height: 1.5;">
+        Absinthe<br/>Acid Drops, type Raspberry<br/>Almond<br/>Almond Lemon/American<br/>Angelica<br/>Apple (different types)<br/>Apple Pie<br/>Apricot<br/>Arrack<br/>Avocado<br/>Baileys<br/>Banana (different types)<br/>Benedictine<br/>Bergamot<br/>Bilberry<br/>Biscuit<br/>Bitter Lemon<br/>Bitter Lemon, for Lemon Gin<br/>Black Currant<br/>Black Velvet<br/>Blackberry<br/>Blood Orange<br/>Bordeaux<br/>Bubblegum<br/>Butter<br/>Butter Cream<br/>Butter Lemon<br/>Butter Vanilla<br/>Butterscotch<br/>Californian Fruit<br/>Caffe Latte<br/>Cappuccino<br/>Caramel<br/>Cascade<br/>Cassis<br/>Champagne<br/>Champagne Cider<br/>Chartreuse<br/>Cheese (different types for bakery purposes)<br/>Cherry<br/>Cherry Amarena<br/>Cherry Brandy<br/>Chestnut<br/>Cherry Cola<br/>Chipolata<br/>Chocolate (different types)<br/>Chocolate/Rhum<br/>Cinnamon<br/>Clove<br/>Cocktail<br/>Cocoa<br/>Cocoa Melange<br/>Cocos<br/>Cocos fresh<br/>Cocos roasted<br/>Coffee<br/>Coffee Candy, type ‘Haagse Hopjes’<br/>Coffee Milk<br/>Cognac<br/>Cognac, type ‘Fine Champagne’<br/>Cola<br/>Cola Champagne<br/>Cola, type Coca Cola<br/>Confiseurs Mocha<br/>Cook spices / Cookie<br/>Cooling
+      </div>
+      <!-- Column 2 -->
+      <div style="flex: 1 1 260px; font-size: 14px; font-family: Inter, sans-serif; line-height: 1.5;">
+        Cream<br/>Cream Vanilla<br/>Creambutter<br/>Creme de Cacaque<br/>Creme de Menthe<br/>Creme de Noyaux<br/>Creme de Rose<br/>Creme Soda<br/>Cumin liquor<br/>Curaçao (different types)<br/>Currantbread<br/>Custard<br/>Dates<br/>Dutch Caramel candy<br/>Dutch liquors (different types)<br/>Dutch ‘Speculaas’ cook spices<br/>Egg Nog (Dutch Advocaat)<br/>Elixer d’Anvers<br/>Energy Drink<br/>Eucalyptus Mint<br/>Eucamint<br/>Flavour granules for tea<br/>Foaming extract<br/>Forest Fruit<br/>Fruit candy<br/>Fruitmix, type ‘N.O.C.’<br/>Fruit Punch<br/>Fruitsoda<br/>Ginger<br/>Ginger Ale<br/>Gooseberry<br/>Grand Marnier<br/>Grape<br/>Grapefruit<br/>Green apple<br/>Grenadine<br/>Hazelnut (different types)<br/>Honey (different types)<br/>IcePunch<br/>Irish Coffee<br/>Jamaica Rhum<br/>Jamaica Rhum dark Dip Liquor<br/>Kirsch (different types)<br/>Kiwi<br/>Lemon<br/>Lemon Gin<br/>Lemon Lime<br/>Lemon Lime, type ‘Seven Up’<br/>Lemon-squash<br/>Lemonbitter<br/>Licorice<br/>Licorice, type Dutch ‘Griotten’<br/>Lime<br/>Lime Tonic<br/>Lychee<br/>Madeira<br/>Malaga<br/>Malt Vinegar<br/>Malt Wine<br/>Mango (different types)<br/>Maple<br/>Maracuja<br/>Maraschinno<br/>Marshmellow<br/>Martinique Rhum<br/>Marzipan
+      </div>
+      <!-- Column 3 -->
+      <div style="flex: 1 1 260px; font-size: 14px; font-family: Inter, sans-serif; line-height: 1.5;">
+        Melon (different types)<br/>Menthol<br/>Menthol Eucalyptus<br/>Milk Caramel<br/>Milk Cream<br/>Milkcchocolate<br/>Mocha extract, type ‘Haagse Hopjes’<br/>Mulberry<br/>Neroli for Marzipan<br/>Nougat<br/>Nut (different types)<br/>Oat-straw<br/>Orange (different types)<br/>Orange Blossom<br/>Orange Mint<br/>Panettone<br/>Passion Fruit<br/>Pastille<br/>Peach (different types)<br/>Peanut (different types)<br/>Pear<br/>Pear, type Bergamotpear<br/>Pear, type Williamspear<br/>Peppermint<br/>Persico Brandy Dip Liquor<br/>Pineapple (different types)<br/>Pistachio<br/>Porte à Porte<br/>Portugal<br/>Prune<br/>Punch<br/>Raspberry<br/>Redcurrant<br/>Reine Claude<br/>Rhum (different types)<br/>Rootbeer<br/>Rootbitter<br/>Rose<br/>Rosemary<br/>Sarsaparilla<br/>Sherry<br/>Spearmint<br/>Spice Bitter<br/>Stracciatella<br/>Strawberry (different types)<br/>Star anise<br/>Tamarind<br/>Tamarind Licorice<br/>Thyme<br/>Toffee Caramel<br/>Toffee Cream<br/>Tonic<br/>Triple Sec<br/>Tropical<br/>Tutti Frutti<br/>Vanilla (different types)<br/>Vanilla Bourbon<br/>Vanillica<br/>Vermouth (different types)<br/>Violette<br/>Walnut (different types)<br/>Whipped cream<br/>Whiskey (different types)<br/>Wodka<br/>Yoghurt
+      </div>
+    </div>
+    <div style="color: #4A4387; font-size: 14px; font-family: Inter, sans-serif; font-weight: 500;">
+      You’re looking for something else? Please ask us!
+    </div>
+  </div>
+
+    <!-- SERTİFİKA BLOĞU -->
+    <div style="margin-top: 48px; background: white; padding: 16px 24px; border-radius: 8px; border: 1px solid #E5E7EB; display: flex; justify-content: center; align-items: center; gap: 48px; flex-wrap: wrap; box-sizing: border-box;">
+
+      <!-- FSSC Logo -->
+      <img src="https://atmar.bg/email_campaigns/250714_petfoods/fssc22000.png" alt="FSSC22000 certification" style="height: 32px; object-fit: contain;" />
+
+      <!-- Text with check icon -->
+      <div style="display: flex; align-items: center; gap: 8px; max-width: 360px; text-align: center;">
+        <img src="https://atmar.bg/email_campaigns/250714_petfoods/icon-check.svg" alt="check icon" style="width: 16px; height: 16px;" />
+        <p style="margin: 0; color: #87888A; font-size: 14px; font-family: Inter, sans-serif; line-height: 18px;">
+          We supply food flavours in accordance with 1334/2008/EU regulation.
+        </p>
+      </div>
+
+      <!-- Badges -->
+      <div style="display: flex; gap: 24px; flex-wrap: wrap; justify-content: center;">
+        <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px;">
+          <img src="https://atmar.bg/email_campaigns/250714_petfoods/non-gmo.png" alt="Non GMO" style="height: 45px; object-fit: contain;" />
+          <p style="margin: 0; color: #87888A; font-size: 13px; font-family: Inter, sans-serif;">All products are non GMO</p>
+        </div>
+
+        <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px;">
+          <img src="https://atmar.bg/email_campaigns/250714_petfoods/halal.png" alt="Halal Certified" style="height: 45px; object-fit: contain;" />
+          <p style="margin: 0; color: #87888A; font-size: 13px; font-family: Inter, sans-serif;">Possible for some of products</p>
+        </div>
+
+        <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px;">
+          <img src="https://atmar.bg/email_campaigns/250714_petfoods/kosher.png" alt="Kosher Certified" style="height: 45px; object-fit: contain;" />
+          <p style="margin: 0; color: #87888A; font-size: 13px; font-family: Inter, sans-serif;">Possible for some of products</p>
+        </div>
+      </div>
+    </div>
+
+
+  <!-- CTA BLOĞU -->
+  <div style="margin-top: 48px; background: #E3F5F9; border-radius: 8px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; overflow: hidden;">
+    
+    <!-- Yazı -->
+    <div style="padding: 32px; flex: 1 1 300px; display: flex; flex-direction: column; gap: 24px; box-sizing: border-box;">
+      <div style="color: #4A4387; font-size: 20px; font-family: 'Libre Baskerville', serif; font-weight: 700;">
+        Looking for the perfect flavour match?
+      </div>
+      <div style="color: #1F2937; font-size: 16px; font-family: Inter, sans-serif; line-height: 1.5;">
+        Let’s create something your customers will love.<br>
+        Tell us what you need – our team is ready to help you find the best solutions for your recipes.
+      </div>
+      <a href="mailto:foodingredients@atmarbio.com" style="text-decoration: none;">
+        <div style="width: 142px; padding: 10px 12px; background: #4A4387; border-radius: 8px; color: white; font-family: Inter, sans-serif; font-size: 15px; font-weight: 600; text-align: center;">
+          Ask Us
+        </div>
+      </a>
+      <a href="https://www.atmarbio.com" style="color: black; font-family: Inter, sans-serif; font-size: 14px; text-decoration: none;">
+        www.atmarbio.com
+      </a>
+    </div>
+
+    <!-- Görsel -->
+    <div style="flex: 0 0 350px; height: 262px; overflow: hidden;">
+      <img src="https://atmar.bg/email_campaigns/250714_petfoods/55000839_9367689.png" alt="Marshmallows" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+  </div>
+</div>
+
+<a href="https://hook.eu2.make.com/nnouealhmb9mn4krapd26ci2izhya5tx"
+   style="display: block; text-align: center; font-size: 10px; font-family: Inter, sans-serif; color: #6B7280; text-decoration: underline; margin: 24px 0;">
+   Unsubscribe
+</a>
+</body>
+</html>

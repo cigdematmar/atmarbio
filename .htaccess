@@ -1,6 +1,11 @@
 Options -Indexes
 DirectoryIndex index.html
 
+# Force www
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^atmarbio\.com$ [NC]
+RewriteRule ^(.*)$ https://www.atmarbio.com/$1 [R=301,L]
+
 # Custom error pages
 ErrorDocument 404 /404.html
 
