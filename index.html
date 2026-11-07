@@ -139,7 +139,7 @@
         </li>
       </ul>
       <div class="hero__ctas">
-        <a href="#contact" class="btn-primary">Write Us</a>
+        <a href="#contact" class="btn-primary">Request a Flavor</a>
         <a href="#categories" class="btn-outline">Browse Categories</a>
       </div>
     </div>
@@ -179,7 +179,7 @@
   <p class="about__body">If that sounds like what you have been missing, let us talk.</p>
   <div class="about__cta-strip">
     <p>Ready to start? Describe your product and we will reply within one business day.</p>
-    <a href="#contact">Start a conversation</a>
+    <a href="#contact">Request a Flavor</a>
   </div>
 </section>
 
@@ -487,46 +487,156 @@
 <section class="contact" id="contact">
   <div class="contact__grid">
     <div class="contact__info">
-      <h2>Contact Us</h2>
-      <p class="contact__reply">Fast replies within 1 business day.</p>
-      <p>We're always looking for new and exciting projects. Let's connect and work together!</p>
+      <h2>Request a Flavor</h2>
+      <p class="contact__reply">Tell us about your application. We confirm your request within 1 business day.</p>
+      <details class="contact__how" open>
+        <summary>How it works</summary>
+        <ol class="contact__steps">
+          <li><strong>Submit your request</strong><span>Tell us the flavor and how you will use it.</span></li>
+          <li><strong>Feasibility check</strong><span>We review every request and come back with a feasibility answer.</span></li>
+          <li><strong>Free sample</strong><span>If it is feasible, we send a ~10 ml sample for your evaluation.</span></li>
+          <li><strong>Approval and order</strong><span>Once approved, we move to supply. Minimum order is 5 kg per flavor.</span></li>
+        </ol>
+      </details>
       <p>Varna/Bulgaria</p>
-      <p><a href="mailto:info@atmarbio.com">info@atmarbio.com</a></p>
     </div>
-    <form class="contact__form">
-      <label>
-        Name
-        <div class="input-wrapper">
-          <img src="icons/icon-user.svg" alt="Name Icon" class="icon" />
-          <input type="text" name="name" placeholder="Name and surname" required>
+    <div class="contact__panel">
+      <form class="contact__form" id="flavorRequestForm" novalidate>
+
+        <div class="field" data-field="flavours">
+          <label for="fr-flavours" class="field__label">Which flavor(s) do you need? <span class="req" aria-hidden="true">*</span></label>
+          <div class="input-wrapper">
+            <img src="icons/icon-subject.svg" alt="" class="icon" />
+            <input type="text" id="fr-flavours" name="flavours" placeholder="e.g. Vanilla, strawberry, smoked paprika" autocomplete="off">
+          </div>
+          <p class="field__error" hidden></p>
         </div>
-      </label>
-      <label>
-        Email
-        <div class="input-wrapper">
-          <img src="icons/icon-email.svg" alt="Email Icon" class="icon" />
-          <input type="email" name="email" placeholder="Your email address" required>
+
+        <fieldset class="field" data-field="application">
+          <legend>What will it be used in? <span class="req" aria-hidden="true">*</span></legend>
+          <div class="chips">
+            <label class="chip"><input type="radio" name="application" value="Beverage"><span>Beverage</span></label>
+            <label class="chip"><input type="radio" name="application" value="Dairy"><span>Dairy</span></label>
+            <label class="chip"><input type="radio" name="application" value="Bakery"><span>Bakery</span></label>
+            <label class="chip"><input type="radio" name="application" value="Confectionery"><span>Confectionery</span></label>
+            <label class="chip"><input type="radio" name="application" value="Savory &amp; snacks"><span>Savory &amp; snacks</span></label>
+            <label class="chip"><input type="radio" name="application" value="Pet food &amp; feed"><span>Pet food &amp; feed</span></label>
+            <label class="chip"><input type="radio" name="application" value="Other"><span>Other</span></label>
+          </div>
+          <div class="field__other" data-other hidden>
+            <div class="input-wrapper">
+              <input type="text" name="applicationOther" placeholder="Tell us which product" aria-label="Other product">
+            </div>
+          </div>
+          <p class="field__error" hidden></p>
+        </fieldset>
+        <fieldset class="field" data-field="form">
+          <legend>Form <span class="req" aria-hidden="true">*</span></legend>
+          <div class="chips">
+            <label class="chip"><input type="radio" name="form" value="Liquid"><span>Liquid</span></label>
+            <label class="chip"><input type="radio" name="form" value="Powder"><span>Powder</span></label>
+            <label class="chip"><input type="radio" name="form" value="No preference"><span>No preference</span></label>
+          </div>
+          <p class="field__error" hidden></p>
+        </fieldset>
+        <fieldset class="field" data-field="source">
+          <legend>Source <span class="req" aria-hidden="true">*</span></legend>
+          <div class="chips">
+            <label class="chip"><input type="radio" name="source" value="Natural"><span>Natural</span></label>
+            <label class="chip"><input type="radio" name="source" value="Artificial"><span>Artificial</span></label>
+            <label class="chip"><input type="radio" name="source" value="No preference"><span>No preference</span></label>
+          </div>
+          <p class="field__error" hidden></p>
+        </fieldset>
+        <fieldset class="field" data-field="solubility">
+          <legend>Solubility <span class="req" aria-hidden="true">*</span></legend>
+          <div class="chips">
+            <label class="chip"><input type="radio" name="solubility" value="Water-soluble"><span>Water-soluble</span></label>
+            <label class="chip"><input type="radio" name="solubility" value="Oil-soluble"><span>Oil-soluble</span></label>
+            <label class="chip"><input type="radio" name="solubility" value="Not sure"><span>Not sure</span></label>
+          </div>
+          <p class="field__hint">Beverages usually need water-soluble. Fat-based products such as chocolate or fillings usually need oil-soluble.</p>
+          <p class="field__error" hidden></p>
+        </fieldset>
+        <fieldset class="field" data-field="process">
+          <legend>Any process factors that can affect the flavor? <span class="req" aria-hidden="true">*</span></legend>
+          <div class="chips">
+            <label class="chip"><input type="checkbox" name="process" value="High heat"><span>High heat (baking, pasteurization)</span></label>
+            <label class="chip"><input type="checkbox" name="process" value="Acidic (low pH)"><span>Acidic (low pH)</span></label>
+            <label class="chip"><input type="checkbox" name="process" value="Freezing"><span>Freezing</span></label>
+            <label class="chip"><input type="checkbox" name="process" value="Extrusion"><span>Extrusion</span></label>
+            <label class="chip"><input type="checkbox" name="process" value="None / not sure"><span>None / not sure</span></label>
+          </div>
+          <p class="field__error" hidden></p>
+        </fieldset>
+        <fieldset class="field" data-field="quantity">
+          <legend>Estimated order size per flavor <span class="req" aria-hidden="true">*</span></legend>
+          <div class="chips">
+            <label class="chip"><input type="radio" name="quantity" value="5+ kg"><span>5+ kg</span></label>
+            <label class="chip"><input type="radio" name="quantity" value="10+ kg"><span>10+ kg</span></label>
+            <label class="chip"><input type="radio" name="quantity" value="20+ kg"><span>20+ kg</span></label>
+          </div>
+          <p class="field__hint">Minimum order: 5 kg per flavor.</p>
+          <p class="field__error" hidden></p>
+        </fieldset>
+
+        <div class="field" data-field="notes">
+          <label for="fr-notes" class="field__label">Anything else we should know? <span class="opt">(optional)</span></label>
+          <div class="input-wrapper textarea">
+            <img src="icons/icon-message.svg" alt="" class="icon" />
+            <textarea id="fr-notes" name="notes" rows="3" placeholder="Reference product, certifications (halal, vegan...), timeline"></textarea>
+          </div>
         </div>
-      </label>
-      <label>
-        Subject
-        <div class="input-wrapper">
-          <img src="icons/icon-subject.svg" alt="Subject Icon" class="icon" />
-          <input type="text" name="subject" placeholder="Optional - you can leave this blank">
+
+        <div class="field__divider">Your contact details</div>
+
+        <div class="field" data-field="company">
+          <label for="fr-company" class="field__label">Company <span class="req" aria-hidden="true">*</span></label>
+          <div class="input-wrapper">
+            <img src="icons/icon-user.svg" alt="" class="icon" />
+            <input type="text" id="fr-company" name="company" placeholder="Company name" autocomplete="organization">
+          </div>
+          <p class="field__error" hidden></p>
         </div>
-      </label>
-      <label>
-        Message
-        <div class="input-wrapper textarea">
-         <img src="icons/icon-message.svg" alt="Message Icon" class="icon" />
-         <textarea name="message" placeholder="Just type your words here..." rows="4" required></textarea>
-       </div>
-      </label>
-      <button type="submit">
-        <img src="icons/icon-send.svg" alt="Send Icon" class="button-icon" />
-        Send Message
-      </button>
-    </form>
+
+        <div class="field" data-field="email">
+          <label for="fr-email" class="field__label">Email <span class="req" aria-hidden="true">*</span></label>
+          <div class="input-wrapper">
+            <img src="icons/icon-email.svg" alt="" class="icon" />
+            <input type="email" id="fr-email" name="email" placeholder="Your work email address" autocomplete="email">
+          </div>
+          <p class="field__error" hidden></p>
+        </div>
+
+        <div class="field" data-field="name">
+          <label for="fr-name" class="field__label">Name <span class="opt">(optional)</span></label>
+          <div class="input-wrapper">
+            <img src="icons/icon-user.svg" alt="" class="icon" />
+            <input type="text" id="fr-name" name="name" placeholder="Name and surname" autocomplete="name">
+          </div>
+        </div>
+
+        <div class="hp" aria-hidden="true">
+          <label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+        </div>
+
+        <button type="submit">
+          <img src="icons/icon-send.svg" alt="" class="button-icon" />
+          <span class="btn-label">Send Request</span>
+        </button>
+        <div class="contact__after">
+          <p class="contact__status" id="flavorRequestStatus" role="status" aria-live="polite"></p>
+          <p class="contact__note">We review every request. Free ~10 ml samples are provided for feasible requests.</p>
+        </div>
+      </form>
+
+      <div class="contact__success" id="flavorRequestSuccess" hidden tabindex="-1">
+        <h3>Request received</h3>
+        <p>Thank you. We will confirm your request within 1 business day and come back with a feasibility answer.</p>
+        <p>Next steps: feasibility check, free sample (~10 ml), approval and order.</p>
+        <button type="button" class="contact__again" id="flavorRequestAgain">Send another request</button>
+      </div>
+    </div>
   </div>
 </section>
 
