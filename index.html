@@ -488,17 +488,17 @@
   <div class="contact__grid">
     <div class="contact__info">
       <h2>Request a Flavor</h2>
+      <p class="contact__location">Varna/Bulgaria</p>
       <p class="contact__reply">Tell us about your application. We confirm your request within 1 business day.</p>
       <details class="contact__how" open>
         <summary>How it works</summary>
         <ol class="contact__steps">
           <li><strong>Submit your request</strong><span>Tell us the flavor and how you will use it.</span></li>
           <li><strong>Feasibility check</strong><span>We review every request and come back with a feasibility answer.</span></li>
-          <li><strong>Free sample</strong><span>If it is feasible, we send a ~10 ml sample for your evaluation.</span></li>
+          <li><strong>Sample</strong><span>If it is feasible, a sample is prepared for your evaluation.</span></li>
           <li><strong>Approval and order</strong><span>Once approved, we move to supply. Minimum order is 5 kg per flavor.</span></li>
         </ol>
       </details>
-      <p>Varna/Bulgaria</p>
     </div>
     <div class="contact__panel">
       <form class="contact__form" id="flavorRequestForm" novalidate>
@@ -626,14 +626,13 @@
         </button>
         <div class="contact__after">
           <p class="contact__status" id="flavorRequestStatus" role="status" aria-live="polite"></p>
-          <p class="contact__note">We review every request. Free ~10 ml samples are provided for feasible requests.</p>
         </div>
       </form>
 
       <div class="contact__success" id="flavorRequestSuccess" hidden tabindex="-1">
         <h3>Request received</h3>
         <p>Thank you. We will confirm your request within 1 business day and come back with a feasibility answer.</p>
-        <p>Next steps: feasibility check, free sample (~10 ml), approval and order.</p>
+        <p>Next steps: feasibility check, sample, approval and order.</p>
         <button type="button" class="contact__again" id="flavorRequestAgain">Send another request</button>
       </div>
     </div>
