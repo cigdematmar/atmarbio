@@ -185,7 +185,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const requestForm = document.getElementById('flavorRequestForm');
 
   if (requestForm) {
-    const WEBHOOK_URL = 'https://hook.eu2.make.com/m5nbq1lwg2up34kcb7mys99x76mw0zin?contactForm=indexContactForm';
+    const WEBHOOK_URL = 'https://atmarbio-forms.vercel.app/api/request';
     const successEl = document.getElementById('flavorRequestSuccess');
     const statusEl = document.getElementById('flavorRequestStatus');
     const againBtn = document.getElementById('flavorRequestAgain');
