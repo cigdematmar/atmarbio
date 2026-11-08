@@ -185,7 +185,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const requestForm = document.getElementById('flavorRequestForm');
 
   if (requestForm) {
-    const WEBHOOK_URL = 'https://atmarbio-forms.vercel.app/api/request';
+    const WEBHOOK_URL = 'https://atmarbio-forms.atmarbio-forms.workers.dev/api/request';
     const successEl = document.getElementById('flavorRequestSuccess');
     const statusEl = document.getElementById('flavorRequestStatus');
     const againBtn = document.getElementById('flavorRequestAgain');
@@ -347,7 +347,9 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .catch(function (err) {
           console.error('Request form error:', err);
-          statusEl.textContent = 'Something went wrong. Please try again in a moment.';
+          statusEl.textContent = err.message === 'HTTP 429'
+            ? 'Too many requests. Please wait a few minutes and try again.'
+            : 'Something went wrong. Please try again in a moment.';
           statusEl.classList.add('is-error');
         })
         .finally(function () {
