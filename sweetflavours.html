@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sweet Flavours Supplier EU | Fruit, Vanilla, Chocolate | Atmar Bio</title>
+  <title>Sweet Flavours: Fruit, Vanilla &amp; Chocolate | Atmar Bio</title>
 
   <!-- ═══ PRIMARY SEO ═══ -->
   <meta name="description" content="EU-origin sweet flavours for food and beverage producers: fruit, vanilla, chocolate, caramel, bakery, dairy and confectionery. Custom development. FSSC 22000." />
@@ -14,7 +14,7 @@
   <!-- ═══ OPEN GRAPH ═══ -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.atmarbio.com/sweetflavours.html" />
-  <meta property="og:title" content="Sweet Flavours Supplier EU | Fruit, Vanilla, Chocolate | Atmar Bio" />
+  <meta property="og:title" content="Sweet Flavours: Fruit, Vanilla &amp; Chocolate | Atmar Bio" />
   <meta property="og:description" content="EU-origin sweet flavours for food and beverage producers: fruit, vanilla, chocolate, caramel, bakery, dairy and confectionery. Custom development. FSSC 22000." />
   <meta property="og:image" content="https://www.atmarbio.com/images/sweet-bakery-flavours.jpg" />
   <meta property="og:image:width" content="1200" />
@@ -24,7 +24,7 @@
 
   <!-- ═══ TWITTER CARD ═══ -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Sweet Flavours Supplier EU | Fruit, Vanilla, Chocolate | Atmar Bio" />
+  <meta name="twitter:title" content="Sweet Flavours: Fruit, Vanilla &amp; Chocolate | Atmar Bio" />
   <meta name="twitter:description" content="EU-origin sweet flavours for food and beverage producers: fruit, vanilla, chocolate, caramel, bakery, dairy and confectionery. Custom development. FSSC 22000." />
   <meta name="twitter:image" content="https://www.atmarbio.com/images/sweet-bakery-flavours.jpg" />
 
@@ -45,7 +45,7 @@
         "@type": "WebPage",
         "@id": "https://www.atmarbio.com/sweetflavours.html#webpage",
         "url": "https://www.atmarbio.com/sweetflavours.html",
-        "name": "Sweet Flavours Supplier EU | Fruit, Vanilla, Chocolate | Atmar Bio",
+        "name": "Sweet Flavours: Fruit, Vanilla & Chocolate | Atmar Bio",
         "description": "EU-origin sweet flavour systems for food and beverage manufacturers. Fruit, vanilla, chocolate, caramel, bakery and dairy flavours.",
         "isPartOf": { "@id": "https://www.atmarbio.com/#website" },
         "publisher": { "@id": "https://www.atmarbio.com/#organization" },
@@ -56,6 +56,52 @@
             { "@type": "ListItem", "position": 2, "name": "Sweet Flavours", "item": "https://www.atmarbio.com/sweetflavours.html" }
           ]
         }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://www.atmarbio.com/sweetflavours.html#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Can I get a natural vanilla that actually declares as \"natural flavouring\"?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. We supply natural vanilla flavours compliant with EU 1334/2008 that declare as \"natural vanilla flavouring\" or \"natural flavouring\" depending on your formulation. We can also advise on FTNF (from the named food) classification if that is your target."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do your fruit flavours work in low-pH beverages?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Most of our fruit flavour systems are designed with acid-stability in mind. Tell us your pH range, Brix, and any thermal treatment and we will confirm compatibility or develop accordingly."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can you convert my existing artificial flavour to natural status?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes — natural conversion is one of our four core services. Bring us your current flavour reference and target declaration. We develop a natural equivalent that maintains the profile your customers already know."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you supply powder and liquid formats?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Both liquid and spray-dried powder formats are available. Tell us your application and process and we will recommend the right carrier and format."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are your sweet flavours suitable for sugar-free and low-calorie products?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. We can advise on masking off-notes from high-intensity sweeteners such as stevia, sucralose, or acesulfame-K, and round the profile to reduce the metallic or bitter aftertaste common in reformulated products."
+            }
+          }
+        ]
       }
     ]
   }
@@ -180,6 +226,13 @@
     .faq__answer { max-height: 0; overflow: hidden; transition: max-height .3s ease; }
     .faq__answer p { padding: 0 20px 16px; font-size: 13px; color: var(--grey-text); line-height: 1.7; }
     .faq__item.open .faq__answer { max-height: 300px; }
+    /* RELATED CATEGORIES */
+    .related-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+    @media(min-width: 600px) { .related-grid { grid-template-columns: repeat(3, 1fr); } }
+    .related-card { display: block; border: 1px solid var(--grey-border); border-radius: 10px; padding: 16px 18px; text-decoration: none; transition: border-color .2s, background .2s; }
+    .related-card:hover { border-color: var(--purple-light); background: #F0EFF8; }
+    .related-card strong { display: block; font-size: 14px; font-weight: 600; color: var(--purple); margin-bottom: 4px; }
+    .related-card span { font-size: 13px; color: var(--grey-text); line-height: 1.5; }
     /* CONTACT */
     .contact-section { background: var(--lime-bg); border-radius: 10px; padding: 40px 28px; }
     .contact-grid { display: grid; gap: 40px; }
@@ -691,6 +744,26 @@
       </button>
       <div class="faq__answer"><p>Yes. We can advise on masking off-notes from high-intensity sweeteners such as stevia, sucralose, or acesulfame-K, and round the profile to reduce the metallic or bitter aftertaste common in reformulated products.</p></div>
     </div>
+  </div>
+</div>
+
+<!-- RELATED CATEGORIES -->
+<div class="section--slim" style="padding-top:0">
+  <h2 class="section__title">Related categories</h2>
+  <p class="section__subtitle">Other flavour ranges often requested alongside sweet flavours.</p>
+  <div class="related-grid">
+    <a class="related-card" href="coffeeflavours.html">
+      <strong>Coffee flavours: espresso, latte and mocha</strong>
+      <span>Coffee profiles for drinks, dairy and bakery.</span>
+    </a>
+    <a class="related-card" href="alcoholicandliquorflavours.html">
+      <strong>Liqueur and spirit flavours</strong>
+      <span>Rum, whiskey and liqueur notes for drinks and desserts.</span>
+    </a>
+    <a class="related-card" href="veganflavours.html">
+      <strong>Vegan flavours for plant-based products</strong>
+      <span>Animal-free flavours for dairy-free and vegan foods.</span>
+    </a>
   </div>
 </div>
 
