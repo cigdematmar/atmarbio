@@ -167,6 +167,8 @@
     .flavour-item.selected { background: var(--purple-light); color: white; }
     .send-btn { width: 100%; background: var(--purple); color: white; padding: 13px; border: none; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: not-allowed; opacity: .5; margin-top: 16px; transition: opacity .2s; }
     .send-btn.active { cursor: pointer; opacity: 1; }
+    a.send-btn { display: block; text-align: center; text-decoration: none; pointer-events: none; }
+    a.send-btn.active { pointer-events: auto; }
     /* FAQ */
     .faq__list { border: 1px solid var(--grey-border); border-radius: 10px; overflow: hidden; }
     .faq__item { border-bottom: 1px solid var(--grey-border); }
@@ -647,7 +649,7 @@
     </div>
   </div>
 
-  <button class="send-btn" id="sendBtn" onclick="openPopup()">Select flavours above to request a brief</button>
+  <a class="send-btn" id="sendBtn" href="index.html#contact" aria-disabled="true">Select flavours above to request them</a>
 </div>
 
 <!-- FAQ -->
@@ -750,23 +752,6 @@
   </div>
 </footer>
 
-<!-- POPUP -->
-<div class="popup-overlay" id="popupOverlay">
-  <div class="popup">
-    <h3>Request a brief</h3>
-    <p style="font-size:13px;color:#6B7280;margin-top:4px">Selected flavours:</p>
-    <div class="popup__selected" id="popupTags"></div>
-    <div class="popup__form">
-      <label>Name<input type="text" placeholder="Your name" /></label>
-      <label>Email<input type="email" placeholder="your@email.com" /></label>
-      <label>Application &amp; notes<textarea placeholder="Tell us what you are making..."></textarea></label>
-    </div>
-    <div class="popup__btns">
-      <button class="popup__send" onclick="submitPopup()">Send brief</button>
-      <button class="popup__cancel" onclick="closePopup()">Cancel</button>
-    </div>
-  </div>
-</div>
 
 <script>
   // Sidebar
@@ -790,6 +775,7 @@
     el.classList.toggle('open');
     items.classList.toggle('open');
   }
+  // Selected flavours are carried to the Request a Flavor form on the home page
   let selected = [];
   function selectFlavour(el) {
     el.classList.toggle('selected');
@@ -798,28 +784,15 @@
     const btn = document.getElementById('sendBtn');
     if (selected.length > 0) {
       btn.classList.add('active');
-      btn.textContent = 'Request a brief for ' + selected.length + ' flavour' + (selected.length > 1 ? 's' : '');
+      btn.removeAttribute('aria-disabled');
+      btn.textContent = 'Request a Flavor (' + selected.length + ' selected)';
+      btn.href = 'index.html?flavours=' + encodeURIComponent(selected.join(', ')) + '#contact';
     } else {
       btn.classList.remove('active');
-      btn.textContent = 'Select flavours above to request a brief';
+      btn.setAttribute('aria-disabled', 'true');
+      btn.textContent = 'Select flavours above to request them';
+      btn.href = 'index.html#contact';
     }
-  }
-  function openPopup() {
-    if (!selected.length) return;
-    const tags = document.getElementById('popupTags');
-    tags.innerHTML = selected.map(s => '<span class="popup__tag">' + s + '</span>').join('');
-    document.getElementById('popupOverlay').classList.add('open');
-  }
-  function closePopup() { document.getElementById('popupOverlay').classList.remove('open'); }
-  function submitPopup() {
-    const btn = document.querySelector('.popup__send');
-    btn.textContent = 'Sent!'; btn.style.background = '#99AF61'; btn.disabled = true;
-    setTimeout(closePopup, 1500);
-  }
-  function handleSubmit(e) {
-    e.preventDefault();
-    const btn = e.target.querySelector('button');
-    btn.textContent = 'Sent! We will be in touch.'; btn.style.background = '#99AF61'; btn.disabled = true;
   }
 </script>
 </body>
