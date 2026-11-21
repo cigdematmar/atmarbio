@@ -15,6 +15,23 @@ RewriteCond %{REQUEST_URI} !^/\.well-known/
 RewriteCond %{HTTP_HOST} ^atmarbio\.com$ [NC]
 RewriteRule ^ https://www.atmarbio.com%{REQUEST_URI} [R=301,L]
 
+# Block files that are in the repository but are not part of the website.
+# The server deploys with git pull, so everything in the repo lands in the web root.
+# 1) Hidden files and folders: .git, .htaccess, .DS_Store, .gitignore ...
+#    (/.well-known/ stays reachable for SSL certificate validation)
+RewriteCond %{REQUEST_URI} !^/\.well-known/
+RewriteRule (^|/)\. - [F,L]
+# 2) Email campaign sources and other non-site folders
+RewriteRule ^(petfood-email-campaign|sweetflavour-email-campaign)(/|$) - [F,L]
+RewriteRule ^sweet\sflavour\smail\scampaign$ - [F,L]
+# 3) Documents, notes and scripts that are never linked from the site
+<FilesMatch "\.(docx?|xlsx?|md|txt|py|mjs|sh|log|bak|zip)$">
+    Require all denied
+</FilesMatch>
+<FilesMatch "^robots\.txt$">
+    Require all granted
+</FilesMatch>
+
 # Custom error pages
 ErrorDocument 404 /404.html
 
