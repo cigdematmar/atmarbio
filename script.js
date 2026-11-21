@@ -25,141 +25,59 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // ====================
-  // PETFOOD PAGE LOGIC
+  // CATEGORY PAGE FLAVOUR SELECTION
   // ====================
-  // Skip single-section logic on pages that define their own multi-section handling
-  if (!document.body.classList.contains('multi-section-page')) {
+  // Selected flavours are carried to the Request a Flavor form on the home page
+  // (index.html?flavours=...#contact). Nothing is sent from category pages.
+  const MAX_SELECTED = 5;
   const categoryCards = document.querySelectorAll('.usage-card');
-  const flavourItems = document.querySelectorAll('.flavour-item');
-  const button = document.querySelector('.send-button');
-  const popupOverlay = document.querySelector('.popup-overlay');
-  const popupForm = document.getElementById('popupForm');
-  const selectedCategoryDiv = document.getElementById('selectedCategory');
-  const selectedFlavoursDiv = document.getElementById('selectedFlavours');
 
-  let selectedCategory = "";
-  let selectedCount = 0;
-
-  // ✅ Category Selection
   categoryCards.forEach(card => {
     card.addEventListener('click', () => {
       categoryCards.forEach(c => c.classList.remove('selected'));
       card.classList.add('selected');
-
-      selectedCategory = card.getAttribute('data-name') || "";
     });
   });
 
-  // ✅ Flavour Selection
-  flavourItems.forEach(item => {
-    item.addEventListener('click', () => {
-      if (item.classList.contains('selected')) {
-        item.classList.remove('selected');
-        selectedCount--;
-      } else {
-        if (selectedCount < 5) {
-          item.classList.add('selected');
-          selectedCount++;
-        } else {
-          alert('You can select up to 5 flavours only.');
+  // Each .flavour-selection section has its own items and button (tobacco has three)
+  const flavourScopes = document.querySelectorAll('.flavour-selection');
+  (flavourScopes.length ? Array.from(flavourScopes) : [document]).forEach(scope => {
+    const items = scope.querySelectorAll('.flavour-item');
+    const button = scope.querySelector('.send-button');
+    if (!items.length) return;
+
+    const selectedNames = () => Array.from(items)
+      .filter(el => el.classList.contains('selected'))
+      .map(el => el.textContent.trim());
+
+    const refresh = () => {
+      if (!button) return;
+      const count = selectedNames().length;
+      button.disabled = count === 0;
+      button.classList.toggle('active', count > 0);
+      button.textContent = count > 0 ? 'Request a Flavor (' + count + ' selected)' : 'Request a Flavor';
+    };
+
+    items.forEach(item => {
+      item.addEventListener('click', () => {
+        if (!item.classList.contains('selected') && selectedNames().length >= MAX_SELECTED) {
+          alert('You can select up to ' + MAX_SELECTED + ' flavours at a time.');
+          return;
         }
-      }
-
-      if (button) {
-        button.disabled = selectedCount === 0;
-        button.classList.toggle('active', selectedCount > 0);
-      }
+        item.classList.toggle('selected');
+        refresh();
+      });
     });
+
+    if (button) {
+      refresh();
+      button.addEventListener('click', () => {
+        const names = selectedNames();
+        if (!names.length) return;
+        window.location.href = 'index.html?flavours=' + encodeURIComponent(names.join(', ')) + '#contact';
+      });
+    }
   });
-
-  // ✅ Show Popup on Send
-  if (button) {
-    button.addEventListener('click', () => {
-      if (!selectedCategory) {
-        alert("Please select a category first.");
-        return;
-      }
-
-      if (selectedCategoryDiv) {
-        selectedCategoryDiv.innerText = selectedCategory;
-      }
-
-      const selectedFlavours = Array.from(document.querySelectorAll('.flavour-item.selected'))
-        .map(el => el.textContent.trim());
-
-      if (selectedFlavoursDiv) {
-        selectedFlavoursDiv.innerHTML = "";
-        const fragment = document.createDocumentFragment();
-        selectedFlavours.forEach(flavour => {
-          const span = document.createElement('span');
-          span.innerText = flavour;
-          fragment.appendChild(span);
-        });
-        selectedFlavoursDiv.appendChild(fragment);
-      }
-
-      popupOverlay?.classList.remove('hidden');
-    });
-  }
-
-  // ✅ Close Popup on Overlay Click
-  if (popupOverlay) {
-    popupOverlay.addEventListener('click', (e) => {
-      if (e.target === popupOverlay) {
-        popupOverlay.classList.add('hidden');
-      }
-    });
-  }
-
-  // ✅ Handle Form Submission
-  if (popupForm) {
-    popupForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-  
-      const formData = new FormData(popupForm);
-      formData.append('category', selectedCategory);
-  
-      const selectedFlavours = Array.from(document.querySelectorAll('.flavour-item.selected'))
-        .map(el => el.textContent.trim())
-        .join(', ');
-      formData.append('flavours', selectedFlavours);
-  
-      const payload = {};
-      for (let [key, value] of formData.entries()) {
-        payload[key] = value;
-      }
-  
-      fetch('https://hook.eu2.make.com/m5nbq1lwg2up34kcb7mys99x76mw0zin?contactForm=popupPetfoodForm', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payload)
-      })
-        .then(res => {
-          if (res.ok) {
-            alert('Thank you for your message!');
-            popupForm.reset();
-            popupOverlay?.classList.add('hidden');
-            document.querySelectorAll('.flavour-item.selected').forEach(el => el.classList.remove('selected'));
-            categoryCards.forEach(c => c.classList.remove('selected'));
-            selectedCategory = "";
-            selectedCount = 0;
-            if (button) {
-              button.disabled = true;
-              button.classList.remove('active');
-            }
-          } else {
-            alert('Submission failed. Please try again.');
-          }
-        })
-        .catch(err => {
-          console.error('Webhook Error:', err);
-          alert('Error sending data.');
-        });
-    });
-  }
-  } // end multi-section-page guard
 
 
   // ====================
@@ -194,6 +112,24 @@ document.addEventListener('DOMContentLoaded', function () {
     const otherWrap = requestForm.querySelector('[data-other]');
     const how = document.querySelector('.contact__how');
     const NONE_OPTION = 'None / not sure';
+
+    // Pre-fill flavours chosen on a category page (index.html?flavours=...#contact)
+    const FLAVOURS_MAX = 300; // matches the Worker's limit for "flavours"
+    try {
+      const fromUrl = new URLSearchParams(window.location.search).get('flavours');
+      const flavoursInput = requestForm.elements['flavours'];
+      if (fromUrl && flavoursInput && !flavoursInput.value) {
+        let clean = fromUrl.replace(/[\u0000-\u001F\u007F<>]/g, ' ').replace(/\s+/g, ' ').trim();
+        if (clean.length > FLAVOURS_MAX) {
+          clean = clean.slice(0, FLAVOURS_MAX);
+          const lastComma = clean.lastIndexOf(',');
+          if (lastComma > 0) clean = clean.slice(0, lastComma);
+        }
+        flavoursInput.value = clean;
+      }
+    } catch (err) {
+      // URLSearchParams unsupported or malformed query: leave the field empty
+    }
 
     // "How it works": collapsed on small screens, always open on desktop
     if (how) {

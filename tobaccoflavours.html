@@ -10,7 +10,7 @@
     <link rel="icon" href="images/favicon.png" type="image/png">
     <link rel="canonical" href="https://www.atmarbio.com/tobaccoflavours.html" />
   </head>
-  <body class="multi-section-page">
+  <body>
 
   <!-- Header (menu) -->
 <header>
@@ -182,7 +182,7 @@
     <div class="flavour-item">Tobacco Sauce type Stars & Stripes</div>
     <div class="flavour-item">Tobacco Sauce type Virginia</div>
   </div>
-  <button class="send-button" disabled>Send Us</button>
+  <button type="button" class="send-button" disabled>Request a Flavor</button>
 </section>
 
 
@@ -258,7 +258,7 @@
     <div class="flavour-item">Whisky</div>
     <div class="flavour-item">Winegums</div>
   </div>
-  <button class="send-button" disabled>Send Us</button>
+  <button type="button" class="send-button" disabled>Request a Flavor</button>
 </section>
 
 
@@ -419,7 +419,7 @@
     <div class="flavour-item">Whiskey (different types)</div>
     <div class="flavour-item">Wodka</div>
   </div>
-  <button class="send-button" disabled>Send Us</button>
+  <button type="button" class="send-button" disabled>Request a Flavor</button>
 </section>
 
 
@@ -451,82 +451,10 @@
 
 
 <!-- Popup for Section 1: Tobacco & Tobacco Sauces -->
-<div class="popup-overlay hidden" id="popup-tobacco">
-  <div class="popup">
-    <div class="popup-content">
-      <p class="popup-title">Let's connect and work together!</p>
-      <div class="popup-section">
-        <h4>Your Selected Category:</h4>
-        <div id="cat-tobacco" class="popup-selected"></div>
-      </div>
-      <div class="popup-section">
-        <h4>Your Flavour Interest:</h4>
-        <div id="flavours-tobacco" class="popup-flavours"></div>
-      </div>
-      <form id="form-tobacco">
-        <label for="name-tobacco">Name</label>
-        <input type="text" id="name-tobacco" name="name" placeholder="Name and surname">
-        <label for="email-tobacco">Email <span style="color:red">*</span></label>
-        <input type="email" id="email-tobacco" name="email" placeholder="Your email address" required>
-        <label for="message-tobacco">Message</label>
-        <textarea id="message-tobacco" name="message" placeholder="Just type your words here..."></textarea>
-        <button type="submit" class="button purple fullwidth">Send Message</button>
-      </form>
-    </div>
-  </div>
-</div>
 
 <!-- Popup for Section 2: Vaping -->
-<div class="popup-overlay hidden" id="popup-vaping">
-  <div class="popup">
-    <div class="popup-content">
-      <p class="popup-title">Let's connect and work together!</p>
-      <div class="popup-section">
-        <h4>Your Selected Category:</h4>
-        <div id="cat-vaping" class="popup-selected"></div>
-      </div>
-      <div class="popup-section">
-        <h4>Your Flavour Interest:</h4>
-        <div id="flavours-vaping" class="popup-flavours"></div>
-      </div>
-      <form id="form-vaping">
-        <label for="name-vaping">Name</label>
-        <input type="text" id="name-vaping" name="name" placeholder="Name and surname">
-        <label for="email-vaping">Email <span style="color:red">*</span></label>
-        <input type="email" id="email-vaping" name="email" placeholder="Your email address" required>
-        <label for="message-vaping">Message</label>
-        <textarea id="message-vaping" name="message" placeholder="Just type your words here..."></textarea>
-        <button type="submit" class="button purple fullwidth">Send Message</button>
-      </form>
-    </div>
-  </div>
-</div>
 
 <!-- Popup for Section 3: Shisha & Liqueur Bases -->
-<div class="popup-overlay hidden" id="popup-shisha">
-  <div class="popup">
-    <div class="popup-content">
-      <p class="popup-title">Let's connect and work together!</p>
-      <div class="popup-section">
-        <h4>Your Selected Category:</h4>
-        <div id="cat-shisha" class="popup-selected"></div>
-      </div>
-      <div class="popup-section">
-        <h4>Your Flavour Interest:</h4>
-        <div id="flavours-shisha" class="popup-flavours"></div>
-      </div>
-      <form id="form-shisha">
-        <label for="name-shisha">Name</label>
-        <input type="text" id="name-shisha" name="name" placeholder="Name and surname">
-        <label for="email-shisha">Email <span style="color:red">*</span></label>
-        <input type="email" id="email-shisha" name="email" placeholder="Your email address" required>
-        <label for="message-shisha">Message</label>
-        <textarea id="message-shisha" name="message" placeholder="Just type your words here..."></textarea>
-        <button type="submit" class="button purple fullwidth">Send Message</button>
-      </form>
-    </div>
-  </div>
-</div>
 
 
   <!-- Footer -->
@@ -578,135 +506,8 @@
   </div>
 </footer>
 
-<script src="script.js?v=20261108"></script>
+<script src="script.js?v=20261121"></script>
 
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  const WEBHOOK = 'https://hook.eu2.make.com/m5nbq1lwg2up34kcb7mys99x76mw0zin?contactForm=popupPetfoodForm';
-
-  // Shared category selection
-  const categoryCards = document.querySelectorAll('.usage-card');
-  let selectedCategory = '';
-
-  categoryCards.forEach(card => {
-    card.addEventListener('click', () => {
-      categoryCards.forEach(c => c.classList.remove('selected'));
-      card.classList.add('selected');
-      selectedCategory = card.getAttribute('data-name') || '';
-    });
-  });
-
-  // Per-section configuration
-  const sections = [
-    { sectionId: 'section-tobacco', popupId: 'popup-tobacco', catId: 'cat-tobacco', flavoursId: 'flavours-tobacco', formId: 'form-tobacco' },
-    { sectionId: 'section-vaping',  popupId: 'popup-vaping',  catId: 'cat-vaping',  flavoursId: 'flavours-vaping',  formId: 'form-vaping'  },
-    { sectionId: 'section-shisha',  popupId: 'popup-shisha',  catId: 'cat-shisha',  flavoursId: 'flavours-shisha',  formId: 'form-shisha'  },
-  ];
-
-  sections.forEach(({ sectionId, popupId, catId, flavoursId, formId }) => {
-    const section      = document.getElementById(sectionId);
-    const popupOverlay = document.getElementById(popupId);
-    if (!section || !popupOverlay) return;
-
-    const items      = section.querySelectorAll('.flavour-item');
-    const button     = section.querySelector('.send-button');
-    const catDiv     = document.getElementById(catId);
-    const flavoursDiv = document.getElementById(flavoursId);
-    const form       = document.getElementById(formId);
-    let count = 0;
-
-    // Flavour item toggle
-    items.forEach(item => {
-      item.addEventListener('click', () => {
-        if (item.classList.contains('selected')) {
-          item.classList.remove('selected');
-          count--;
-        } else {
-          if (count < 5) {
-            item.classList.add('selected');
-            count++;
-          } else {
-            alert('You can select up to 5 flavours only.');
-          }
-        }
-        if (button) {
-          button.disabled = count === 0;
-          button.classList.toggle('active', count > 0);
-        }
-      });
-    });
-
-    // Send button opens popup
-    if (button) {
-      button.addEventListener('click', () => {
-        if (!selectedCategory) {
-          alert('Please select a production category first.');
-          return;
-        }
-        if (catDiv) catDiv.innerText = selectedCategory;
-        if (flavoursDiv) {
-          flavoursDiv.innerHTML = '';
-          const fragment = document.createDocumentFragment();
-          items.forEach(item => {
-            if (item.classList.contains('selected')) {
-              const span = document.createElement('span');
-              span.innerText = item.textContent.trim();
-              fragment.appendChild(span);
-            }
-          });
-          flavoursDiv.appendChild(fragment);
-        }
-        popupOverlay.classList.remove('hidden');
-      });
-    }
-
-    // Close popup on overlay click
-    popupOverlay.addEventListener('click', e => {
-      if (e.target === popupOverlay) popupOverlay.classList.add('hidden');
-    });
-
-    // Form submission
-    if (form) {
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        const formData = new FormData(form);
-        formData.append('category', selectedCategory);
-        const selectedFlavours = Array.from(items)
-          .filter(el => el.classList.contains('selected'))
-          .map(el => el.textContent.trim())
-          .join(', ');
-        formData.append('flavours', selectedFlavours);
-        const payload = {};
-        for (let [key, value] of formData.entries()) payload[key] = value;
-
-        fetch(WEBHOOK, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        })
-          .then(res => {
-            if (res.ok) {
-              alert('Thank you for your message!');
-              form.reset();
-              popupOverlay.classList.add('hidden');
-              items.forEach(el => el.classList.remove('selected'));
-              categoryCards.forEach(c => c.classList.remove('selected'));
-              selectedCategory = '';
-              count = 0;
-              if (button) { button.disabled = true; button.classList.remove('active'); }
-            } else {
-              alert('Submission failed. Please try again.');
-            }
-          })
-          .catch(err => {
-            console.error('Webhook Error:', err);
-            alert('Error sending data.');
-          });
-      });
-    }
-  });
-});
-</script>
 
 </body>
 </html>
