@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vegan Flavours Supplier EU | Plant-Based &amp; Animal-Free | Atmar Bio</title>
+  <title>Vegan &amp; Plant-Based Flavours | EU Supplier | Atmar Bio</title>
 
   <!-- ═══ PRIMARY SEO ═══ -->
   <meta name="description" content="100% animal-free vegan flavours from the EU for meat alternatives, plant-based dairy, snacks, bakery and nutrition products. Custom development available." />
@@ -14,7 +14,7 @@
   <!-- ═══ OPEN GRAPH ═══ -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.atmarbio.com/veganflavours.html" />
-  <meta property="og:title" content="Vegan Flavours Supplier EU | Plant-Based &amp; Animal-Free | Atmar Bio" />
+  <meta property="og:title" content="Vegan &amp; Plant-Based Flavours | EU Supplier | Atmar Bio" />
   <meta property="og:description" content="100% animal-free vegan flavours from the EU for meat alternatives, plant-based dairy, snacks, bakery and nutrition products. Custom development available." />
   <meta property="og:image" content="https://www.atmarbio.com/images/vegan-burgers-with-quinoa.jpg" />
   <meta property="og:image:width" content="1200" />
@@ -24,7 +24,7 @@
 
   <!-- ═══ TWITTER CARD ═══ -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Vegan Flavours Supplier EU | Plant-Based &amp; Animal-Free | Atmar Bio" />
+  <meta name="twitter:title" content="Vegan &amp; Plant-Based Flavours | EU Supplier | Atmar Bio" />
   <meta name="twitter:description" content="100% animal-free vegan flavours from the EU for meat alternatives, plant-based dairy, snacks, bakery and nutrition products. Custom development available." />
   <meta name="twitter:image" content="https://www.atmarbio.com/images/vegan-burgers-with-quinoa.jpg" />
 
@@ -45,7 +45,7 @@
         "@type": "WebPage",
         "@id": "https://www.atmarbio.com/veganflavours.html#webpage",
         "url": "https://www.atmarbio.com/veganflavours.html",
-        "name": "Vegan Flavours Supplier EU | Plant-Based & Animal-Free | Atmar Bio",
+        "name": "Vegan & Plant-Based Flavours | EU Supplier | Atmar Bio",
         "description": "100% animal-free EU-origin vegan flavour systems for plant-based food and beverage manufacturers.",
         "isPartOf": { "@id": "https://www.atmarbio.com/#website" },
         "publisher": { "@id": "https://www.atmarbio.com/#organization" },
@@ -56,6 +56,52 @@
             { "@type": "ListItem", "position": 2, "name": "Vegan Flavours", "item": "https://www.atmarbio.com/veganflavours.html" }
           ]
         }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://www.atmarbio.com/veganflavours.html#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Are your vegan flavours completely free from animal-derived ingredients?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Our vegan flavour systems are formulated without any animal-derived raw materials including dairy, meat, fish, eggs, honey, or gelatine. We can provide written confirmation of vegan suitability for each product upon request."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can you replicate a meat flavour profile convincingly in a plant-based matrix?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. We develop Maillard-inspired reaction flavours using plant-based precursors that deliver authentic roasted, grilled, and savoury meat notes. Tell us your application — burger patty, sausage, nugget — and your preferred protein base and we will develop accordingly."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do your vegan flavours work in high-protein and high-moisture applications?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Many plant-based products use pea, soy, or wheat protein as a base, which can carry off-notes. We can supply masking systems and top-note flavours specifically tuned to work with these matrices. Share your base formulation and we will advise."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you supply powder and liquid formats?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Both liquid and spray-dried powder formats are available. Tell us your application and process and we will recommend the right carrier and format — all vegan-suitable."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can you help with EU labelling compliance for vegan products?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. We supply flavours compliant with EU Regulation 1334/2008 and provide full declaration support. We can advise on how each flavour should appear on your ingredient list and confirm the absence of any restricted animal-derived substances."
+            }
+          }
+        ]
       }
     ]
   }
@@ -180,6 +226,13 @@
     .faq__answer { max-height: 0; overflow: hidden; transition: max-height .3s ease; }
     .faq__answer p { padding: 0 20px 16px; font-size: 13px; color: var(--grey-text); line-height: 1.7; }
     .faq__item.open .faq__answer { max-height: 300px; }
+    /* RELATED CATEGORIES */
+    .related-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+    @media(min-width: 600px) { .related-grid { grid-template-columns: repeat(3, 1fr); } }
+    .related-card { display: block; border: 1px solid var(--grey-border); border-radius: 10px; padding: 16px 18px; text-decoration: none; transition: border-color .2s, background .2s; }
+    .related-card:hover { border-color: var(--purple-light); background: #F0EFF8; }
+    .related-card strong { display: block; font-size: 14px; font-weight: 600; color: var(--purple); margin-bottom: 4px; }
+    .related-card span { font-size: 13px; color: var(--grey-text); line-height: 1.5; }
     /* CONTACT */
     .contact-section { background: var(--lime-bg); border-radius: 10px; padding: 40px 28px; }
     .contact-grid { display: grid; gap: 40px; }
@@ -616,6 +669,26 @@
       </button>
       <div class="faq__answer"><p>Yes. We supply flavours compliant with EU Regulation 1334/2008 and provide full declaration support. We can advise on how each flavour should appear on your ingredient list and confirm the absence of any restricted animal-derived substances.</p></div>
     </div>
+  </div>
+</div>
+
+<!-- RELATED CATEGORIES -->
+<div class="section--slim" style="padding-top:0">
+  <h2 class="section__title">Related categories</h2>
+  <p class="section__subtitle">Other flavour ranges often requested alongside vegan flavours.</p>
+  <div class="related-grid">
+    <a class="related-card" href="savouryflavours.html">
+      <strong>Savoury flavours: meat, cheese and smoke</strong>
+      <span>Savoury flavour systems for food producers.</span>
+    </a>
+    <a class="related-card" href="sweetflavours.html">
+      <strong>Sweet flavours: fruit, vanilla and chocolate</strong>
+      <span>Sweet flavour systems for food and beverages.</span>
+    </a>
+    <a class="related-card" href="cleanlabelflavours.html">
+      <strong>Clean label and natural flavours</strong>
+      <span>Natural-origin alternatives for cleaner declarations.</span>
+    </a>
   </div>
 </div>
 
