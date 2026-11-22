@@ -1,2 +1,8 @@
 # macOS Finder metadata
 .DS_Store
+
+# Private working files: keep them outside this repo (it is public and the
+# server serves every tracked file). See PR "Remove private files".
+*.docx
+*email-campaign*/
+sweet flavour mail campaign
