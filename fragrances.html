@@ -400,7 +400,7 @@
     <p class="page-hero__sub">Floral, fruity, woody, gourmand and herbal fragrance notes for personal care, cosmetics, candles, air fresheners, cleaning products and perfumes. Choose from classic notes such as rose, jasmine, vanilla, sandalwood and citrus, then tell us your product, base and target profile. We will suggest suitable fragrances from our range.</p>
     <div class="page-hero__cta">
       <p>Looking for the right fragrance? Send us your product, base and target profile.</p>
-      <a href="index.html#contact">Request a Flavor</a>
+      <a href="index.html?from=fragrances#contact">Request a Flavor</a>
     </div>
   </div>
   <div class="page-hero__image">
@@ -541,7 +541,7 @@
     </div>
   </div>
 
-  <a class="send-btn" id="sendBtn" href="index.html#contact" aria-disabled="true">Select fragrances above to request them</a>
+  <a class="send-btn" id="sendBtn" href="index.html?from=fragrances#contact" aria-disabled="true">Select fragrances above to request them</a>
 </section>
 
 <!-- FAQ -->
@@ -597,7 +597,7 @@
   <div class="contact-section" style="text-align:center">
     <h2>Request a Flavor</h2>
     <p class="sub">Tell us about your application in under a minute. We confirm your request within one business day.</p>
-    <a href="index.html#contact" style="display:inline-block;background:var(--purple);color:#fff;padding:13px 28px;border-radius:8px;font-weight:700;font-size:15px;text-decoration:none">Request a Flavor</a>
+    <a href="index.html?from=fragrances#contact" style="display:inline-block;background:var(--purple);color:#fff;padding:13px 28px;border-radius:8px;font-weight:700;font-size:15px;text-decoration:none">Request a Flavor</a>
   </div>
 </div>
 </main>
@@ -675,7 +675,7 @@
     el.nextElementSibling.classList.toggle('open');
   }
   // Selected flavours are carried to the Request a Flavor form on the home page
-  const CONTACT_URL = 'index.html';
+  const CONTACT_URL = 'index.html?from=fragrances';
   let selected = [];
   function selectFlavour(el) {
     el.classList.toggle('selected');
@@ -686,7 +686,7 @@
       btn.classList.add('active');
       btn.removeAttribute('aria-disabled');
       btn.textContent = 'Request a Flavor (' + selected.length + ' selected)';
-      btn.href = CONTACT_URL + '?flavours=' + encodeURIComponent(selected.join(', ')) + '#contact';
+      btn.href = CONTACT_URL + '&flavours=' + encodeURIComponent(selected.join(', ')) + '#contact';
     } else {
       btn.classList.remove('active');
       btn.setAttribute('aria-disabled', 'true');
@@ -694,6 +694,25 @@
       btn.href = CONTACT_URL + '#contact';
     }
   }
+  // Lead source: remember the referring site (hostname only) and UTM tags of the first
+  // page in this visit. Kept in sessionStorage for this tab only; no cookies, no trackers.
+  (function () {
+    try {
+      if (sessionStorage.getItem('atmarbioLeadRef') !== null) return;
+      var host = '';
+      try {
+        var h = new URL(document.referrer).hostname.toLowerCase();
+        if (h && !/(^|\.)atmarbio\.com$/.test(h)) host = h;
+      } catch (e) {}
+      var q = new URLSearchParams(window.location.search);
+      var ref = { referrerHost: host };
+      ['utm_source', 'utm_medium', 'utm_campaign'].forEach(function (k) {
+        var v = q.get(k);
+        if (v) ref[k] = v.slice(0, 100);
+      });
+      sessionStorage.setItem('atmarbioLeadRef', JSON.stringify(ref));
+    } catch (e) {}
+  })();
 </script>
 </body>
 </html>
