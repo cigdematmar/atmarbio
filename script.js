@@ -1,3 +1,23 @@
+// Lead source: remember the referring site (hostname only) and UTM tags of the first
+// page in this visit. Kept in sessionStorage for this tab only; no cookies, no trackers.
+(function () {
+  try {
+    if (sessionStorage.getItem('atmarbioLeadRef') !== null) return;
+    var host = '';
+    try {
+      var h = new URL(document.referrer).hostname.toLowerCase();
+      if (h && !/(^|\.)atmarbio\.com$/.test(h)) host = h;
+    } catch (e) {}
+    var q = new URLSearchParams(window.location.search);
+    var ref = { referrerHost: host };
+    ['utm_source', 'utm_medium', 'utm_campaign'].forEach(function (k) {
+      var v = q.get(k);
+      if (v) ref[k] = v.slice(0, 100);
+    });
+    sessionStorage.setItem('atmarbioLeadRef', JSON.stringify(ref));
+  } catch (e) {}
+})();
+
 document.addEventListener('DOMContentLoaded', function () {
   // ====================
   // SIDEBAR FUNCTIONALITY
@@ -112,6 +132,31 @@ document.addEventListener('DOMContentLoaded', function () {
     const otherWrap = requestForm.querySelector('[data-other]');
     const how = document.querySelector('.contact__how');
     const NONE_OPTION = 'None / not sure';
+
+    // Lead source: which category page sent the visitor here (index.html?from=<slug>#contact).
+    // Stored in sessionStorage for this tab only, sent with the form, never in cookies.
+    const SOURCE_PAGES = ['sweetflavours', 'savouryflavours', 'veganflavours', 'alcoholicandliquorflavours', 'petfood', 'coffeeflavours', 'tobaccoflavours', 'fragrances'];
+    try {
+      const from = (new URLSearchParams(window.location.search).get('from') || '').toLowerCase();
+      if (SOURCE_PAGES.includes(from)) sessionStorage.setItem('atmarbioLeadFrom', from);
+    } catch (err) {
+      // storage blocked: the request is still sent, as "direct"
+    }
+    function leadSource() {
+      const out = { sourcePage: 'direct', referrerHost: '' };
+      try {
+        const from = sessionStorage.getItem('atmarbioLeadFrom');
+        if (SOURCE_PAGES.includes(from)) out.sourcePage = from;
+        const ref = JSON.parse(sessionStorage.getItem('atmarbioLeadRef') || '{}');
+        if (ref && typeof ref.referrerHost === 'string') out.referrerHost = ref.referrerHost;
+        ['utm_source', 'utm_medium', 'utm_campaign'].forEach(function (k) {
+          if (ref && typeof ref[k] === 'string' && ref[k]) out[k] = ref[k];
+        });
+      } catch (err) {
+        // storage blocked or malformed: fall back to "direct"
+      }
+      return out;
+    }
 
     // Pre-fill flavours chosen on a category page (index.html?flavours=...#contact)
     const FLAVOURS_MAX = 300; // matches the Worker's limit for "flavours"
@@ -268,6 +313,7 @@ document.addEventListener('DOMContentLoaded', function () {
         subject: 'Flavor request: ' + flavours,
         message: lines.join('\n')
       };
+      Object.assign(payload, leadSource());
 
       submitBtn.disabled = true;
       submitLabel.textContent = 'Sending...';
